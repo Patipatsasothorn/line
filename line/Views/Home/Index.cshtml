@@ -1,0 +1,150 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mt-4" style="height: 90vh;">
+
+    <div class="row h-100">
+        <!-- รายการแชท -->
+        <div class="col-4 border-end overflow-auto" id="chat-list" style="height: 100%;">
+
+            <input type="text" id="chatSearch" class="form-control mb-3" placeholder="🔍 ค้นหาชื่อแชท...">
+            <ul class="list-group" id="chatItems">
+                <!-- แสดงรายการแชทที่นี่ -->
+            </ul>
+        </div>
+
+
+        <!-- หน้าจอแชท -->
+        <div class="col-8 d-flex flex-column h-100">
+@*             <div class="border-bottom p-2" id="chat-header">
+                <strong id="chat-title">เลือกแชท</strong>
+            </div> *@
+            <div class="flex-grow-1 overflow-auto p-3" id="chat-messages" style="background-color: #f9f9f9;">
+                <!-- ข้อความจะแสดงที่นี่ -->
+            </div>
+            <div class="p-2 border-top">
+                <form id="reply-form" class="d-flex align-items-center gap-2" enctype="multipart/form-data">
+                    <!-- ไอคอนแนบไฟล์ -->
+                    <label for="reply-file" class="btn btn-outline-secondary d-flex align-items-center justify-content-center">
+                        <i class="bi bi-paperclip"></i>
+                    </label>
+                    <input type="file" id="reply-file" accept="image/*" style="display: none;">
+
+                    <input type="text" class="form-control" id="reply-text" placeholder="พิมพ์ข้อความตอบกลับ...">
+                    <input type="hidden" id="Userid">
+                    <button type="submit" class="btn btn-primary">ส่ง</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <script>
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/chatHub")
+            .build();
+
+        connection.on("ReceiveMessage", function (userName, message, pictureUrl,timestamp,userId) {
+            const item = `
+                <div class="d-flex mb-3">
+
+                    <img src="${pictureUrl}" class="rounded-circle me-2 flex-shrink-0" width="40" height="40" alt="${userName}">
+                    <div>
+                        <div class="fw-bold mb-1">${userName}</div>
+                        <div class="bg-light rounded p-2 px-3 shadow-sm" style="max-width: 300px;">
+                            ${message}    <small class="text-muted text-end" style="white-space: nowrap;">${timestamp}</small>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById("chat-messages").innerHTML += item;
+            document.getElementById("Userid").value = userId;
+        });
+
+        connection.on("UpdateChatList", function (userId, displayName, pictureUrl, lastMessage, timestamp) {
+            let existingItem = document.getElementById(`chat-${userId}`);
+
+            const itemHtml = `
+                <li class="list-group-item d-flex align-items-start justify-content-between" id="chat-${userId}" style="cursor: pointer;">
+                    <div class="d-flex">
+                        <img src="${pictureUrl}" class="rounded-circle me-2 flex-shrink-0" width="40" height="40" alt="${displayName}">
+                        <div>
+                            <div class="fw-bold">${displayName}</div>
+                            <div class="text-muted text-truncate" style="max-width: 180px;">${lastMessage}</div>
+                        </div>
+                    </div>
+                    <small class="text-muted text-end" style="white-space: nowrap;">${timestamp}</small>
+                </li>
+            `;
+
+            if (existingItem) {
+                existingItem.outerHTML = itemHtml;
+            } else {
+                document.getElementById("chatItems").innerHTML += itemHtml;
+            }
+        });
+
+  
+        connection.start().catch(function (err) {
+            return console.error(err.toString());
+        });
+    </script>
+    <script>
+        document.getElementById("reply-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const message = document.getElementById("reply-text").value;
+            const userId = document.getElementById("Userid").value;
+
+            fetch("/send-reply", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ userId, message })
+            }).then(res => {
+                if (res.ok) {
+                    document.getElementById("reply-text").value = "";
+                    const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+                    const item = `
+                        <div class="d-flex justify-content-end mb-3">
+                            <div>
+                                <div class="fw-bold mb-1 text-end">คุณ</div>
+                                <div class="bg-success text-white rounded p-2 px-3 shadow-sm" style="max-width: 300px;">
+                                    ${message}
+                                    <div class="text-end">
+                                        <small class="text-white-50">${timestamp}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    document.getElementById("chat-messages").innerHTML += item;
+
+                } else {
+                    alert("ไม่สามารถตอบกลับได้ อาจเป็นเพราะ replyToken หมดอายุแล้ว");
+                }
+            });
+        });
+
+    </script>
+    <script>
+        document.getElementById("chatSearch").addEventListener("input", function () {
+            const searchText = this.value.toLowerCase();
+            const chatItems = document.querySelectorAll("#chatItems li");
+
+            chatItems.forEach(item => {
+                const name = item.querySelector(".fw-bold")?.innerText.toLowerCase();
+                if (name && name.includes(searchText)) {
+                    item.style.display = "";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        });
+    </script>
+
+}
