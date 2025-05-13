@@ -1,0 +1,197 @@
+﻿@{
+    ViewData["Title"] = "เพิ่ม LINE OA Token";
+}
+
+<div class="container-fluid mt-5"style="padding:0px 10rem">
+    <div style="text-align:center">
+        <h3 class="mb-4">เพิ่ม LINE Channel Access Token</h3>
+
+    </div>
+
+    <form id="oaTokenForm" class="d-flex gap-2 mb-3">
+        <input type="text" id="oaTokenInput" class="form-control" placeholder="ใส่ Channel Access Token" required />
+        <button type="submit" class="btn btn-success">เพิ่ม</button>
+    </form>
+
+    <div id="session-data" data-user-id="@Context.Session.GetString("LINE_UserId")" data-display-name="@Context.Session.GetString("LINE_DisplayName")"></div>
+    <div id="oaContainer" style="display:none;">
+        <table class="table table-bordered table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>เลือก</th>
+                    <th>ชื่อ Line OA</th>
+                    <th style="display:none">Token (ซ่อน)</th>
+                    <th style="display:none">Bot ID</th>
+                </tr>
+            </thead>
+            <tbody id="oaList">
+                <!-- OA ที่เพิ่มแล้วจะมาแสดงในนี้ -->
+            </tbody>
+        </table>
+
+    </div>
+    <button id="saveBtn" class="btn btn-warning mt-2" style="display:none;">บันทึกลงฐานข้อมูล</button>
+
+    <button id="confirmBtn" class="btn btn-primary mt-4" style="display:none;">ยืนยัน</button>
+</div>
+
+@section Scripts {
+    <script>
+        let selectedOAs = [];  // เก็บข้อมูล OA ที่เลือก
+
+            document.getElementById('oaTokenForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const token = document.getElementById('oaTokenInput').value.trim();
+            if (!token ) return;
+
+            const inputToken = token.replace(/\s/g, '');
+
+            const existingTokens = Array.from(document.querySelectorAll('#oaList td:nth-child(3) code'))
+                .map(codeEl => codeEl.textContent.replace(/\s/g, ''));
+
+            if (existingTokens.includes(inputToken)) {
+                alert('Line OA นี้มีอยู่แล้วในรายการ');
+                return;
+            }
+
+            const response = await fetch('/LineOA/GetLineOAProfile', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(token)
+            });
+
+            if (!response.ok) {
+                alert('ไม่สามารถดึงข้อมูลจาก LINE OA ได้');
+                return;
+            }
+
+            const data = await response.json();
+
+            document.getElementById('oaContainer').style.display = 'block';
+
+            const row = `
+                <tr data-token="${token}" data-display-name="${data.displayName || '-'}" data-user-id="${data.userId}">
+                    <td>
+                        <input class="form-check-input" type="checkbox"
+                               data-token="${token}"
+                               data-display-name="${data.displayName || '-'}"
+                               data-user-id="${data.userId}"
+                               onclick="toggleSelect(this)">
+                    </td>
+                    <td>${data.displayName || '-'}</td>
+                    <td><code>${token}</code></td>
+                    <td><code>${data.userId}</code></td>
+                </tr>
+            `;
+
+            document.getElementById('oaList').insertAdjacentHTML('beforeend', row);
+
+            document.getElementById('oaTokenInput').value = '';
+        });
+
+
+        function toggleSelect(checkbox) {
+            const token = checkbox.getAttribute('data-token');
+            const displayName = checkbox.getAttribute('data-display-name');
+            const botUserId = checkbox.closest('tr').querySelector('td:nth-child(4) code').textContent; // 👈 ดึง bot id
+            const confirmBtn = document.getElementById('confirmBtn');
+            const saveBtn = document.getElementById('saveBtn');
+
+            if (checkbox.checked) {
+                selectedOAs.push({ token, displayName, botUserId }); // 👈 เพิ่ม botUserId เข้า array
+            } else {
+                selectedOAs = selectedOAs.filter(oa => oa.token !== token);
+            }
+
+            confirmBtn.style.display = selectedOAs.length > 0 ? 'block' : 'none';
+            saveBtn.style.display = selectedOAs.length > 0 ? 'block' : 'none';
+        }
+
+
+        document.getElementById('confirmBtn').addEventListener('click', function () {
+            if (selectedOAs.length > 0) {
+                const tokens = selectedOAs.map(oa => oa.token).join(',');
+                const displayNames = selectedOAs.map(oa => oa.displayName).join(',');
+                const botIds = selectedOAs.map(oa => oa.botUserId).join(','); // 👈 เพิ่ม botId
+
+                window.open(`/Home/Privacy?tokens=${tokens}&displayNames=${displayNames}&botIds=${botIds}`, '_blank');
+            }
+        });
+
+
+        document.getElementById('saveBtn').addEventListener('click', async function () {
+            const userId = document.getElementById('session-data').dataset.userId;
+            const username = document.getElementById('session-data').dataset.displayName; // ดึง LINE_DisplayName
+
+            const selectedRows = document.querySelectorAll('#oaList input:checked');
+            const oaData = [];
+
+            selectedRows.forEach(row => { 
+                const token = row.getAttribute('data-token');
+                const displayName = row.getAttribute('data-display-name');
+                 const BotUserId = row.closest('tr').querySelector('td:nth-child(4) code').textContent;
+
+                oaData.push({
+                    UserId: userId,
+                    Username: username,
+                    Oaname: displayName,
+                    AccessToken: token,
+                    BotUserId: BotUserId
+                });
+            });
+
+            // ส่งข้อมูลที่เลือกไปที่ server เพื่อบันทึกลงฐานข้อมูล
+            const response = await fetch('/LineOA/SaveOaData', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(oaData)
+            });
+
+            if (response.ok) {
+                alert('บันทึกข้อมูลสำเร็จ');
+            } else {
+                alert('เกิดข้อผิดพลาดในการบันทึกข้อมูล');
+            }
+        });
+
+       window.addEventListener('DOMContentLoaded', async () => {
+            const userId = document.getElementById('session-data').dataset.userId;
+            if (!userId) return;
+
+            const response = await fetch(`/LineOA/oatable?userid=${encodeURIComponent(userId)}`);
+            if (!response.ok) {
+                console.error("โหลดข้อมูลล้มเหลว");
+                return;
+            }
+
+            const data = await response.json();
+            if (!data || data.length === 0) return;
+
+            document.getElementById('oaContainer').style.display = 'block';
+
+            data.forEach(item => {
+                        const row = `
+                            <tr data-token="${item.accessToken}" data-display-name="${item.oaname}">
+                                <td>
+                                    <input class="form-check-input" type="checkbox"
+                                        data-token="${item.accessToken}"
+                                        data-display-name="${item.oaname}"
+                                        onclick="toggleSelect(this)">
+                                </td>
+                                <td>${item.oaname}</td>
+                                <td style="display:none"><code>${item.accessToken}</code></td>
+                                <td style="display:none"><code>${item.botUserId}</code></td>
+                            </tr>
+                        `;
+
+                document.getElementById('oaList').insertAdjacentHTML('beforeend', row);
+            });
+        });
+
+
+    </script>
+}

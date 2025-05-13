@@ -1,6 +1,619 @@
 ﻿@{
     ViewData["Title"] = "Privacy Policy";
-}
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+}
+@{
+    var tokens = Context.Request.Query["tokens"];
+    var displayNames = Context.Request.Query["displayNames"];
+    var tokenList = tokens.ToString().Split(','); // แยกค่า token ออก
+    var displayNameList = displayNames.ToString().Split(','); // แยกค่า displayName ออก
+}
+<div style ="text-align:center">
+    <h3>line oa ที่เลือก</h3>
+    <span>Display Name:</span>
+
+    @for (int i = 0; i < tokenList.Length; i++)
+    {
+        <span style="display:none;">Token: @tokenList[i]</span>
+        <span>@displayNameList[i],</span>
+    }
+
+</div>
+
+<div class="container-fluid mt-4" style="height: 90vh;">
+    <div class="modal fade" id="createVipModal" tabindex="-1" aria-labelledby="createVipModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="createVipForm" class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createVipModalLabel">สร้าง VIP ใหม่</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <label for="vipNameInput" class="form-label">ชื่อ VIP:</label>
+                <input type="text" class="form-control" id="vipNameInput" required>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ยกเลิก</button>
+                <button type="submit" class="btn btn-primary">เพิ่ม</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <div class="d-flex h-100 gap-4" style="overflow: hidden;padding:1rem 0px">
+        <!-- รายการแชท -->
+        <div style="width: 500px; background-color:white;padding:1rem;border-radius:16px;box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;" id="chat-list" class="border-end overflow-auto">
+            <div class="d-flex align-items-center gap-2 mb-3">
+                <input type="text" id="chatSearch" class="form-control" placeholder="🔍 ค้นหาชื่อแชท...">
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addOATokenModal">+</button>
+            </div>
+            <!-- ดรอปดาวน์กรองวัน -->
+            <div class="mb-3 d-flex align-items-center gap-2">
+                <label for="dayFilter" class="form-label mb-0">กรองตามอายุแชท:</label>
+                <select id="dayFilter" class="form-select form-select-sm" style="width: auto;">
+                    <option value="">ทั้งหมด</option>
+                    <option value="4">เกิน 4 วัน</option>
+                    <option value="5">เกิน 5 วัน</option>
+                    <option value="7">เกิน 7 วัน</option>
+                </select>
+            </div>
+            <div class="mb-2">
+                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#createVipModal">
+                    ➕ สร้าง แท้ก
+                </button>
+            </div>
+            <!-- VIP แชท -->
+            <!-- ⬇ เพิ่มตรงนี้ -->
+            <div id="customVipSections">
+
+            </div>
+
+            <ul class="list-group mb-3" id="vipChatItems">
+            </ul>
+
+            <!-- แชทธรรมดา -->
+            <div class="mb-2 fw-bold text-secondary toggle-header" data-target="chatItems" style="cursor: pointer;">
+                <i class="fa-solid fa-messages"></i> แชทธรรมดา
+            </div>
+
+            <ul class="list-group" id="chatItems">
+            </ul>
+        </div>
+        <!-- หน้าจอแชท -->
+        <div class="d-flex flex-column h-100 flex-grow-1" style="background-color:white;padding:1rem;border-radius:16px;box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
+            <h5></h5>
+            <input type="text" class="form-control" style="display:none" id="Botid" placeholder="Botid:">
+
+            <div class="flex-grow-1 overflow-auto p-3" id="chat-messages" style="background-color: #f9f9f9;">
+
+                <!-- ข้อความจะแสดงที่นี่ -->
+            </div>
+            <div class="p-2 border-top">
+                <form id="reply-form" class="d-flex align-items-center gap-2" enctype="multipart/form-data">
+                    <!-- แนบไฟล์ -->
+                    <label for="reply-file" class="btn btn-outline-secondary d-flex align-items-center justify-content-center">
+                        <i class="bi bi-paperclip"></i>
+                    </label>
+                    <input type="file" id="reply-file" accept="image/*" style="display: none;">
+
+                    <!-- พิมพ์ข้อความ -->
+                    <input type="text" class="form-control" id="reply-text" placeholder="พิมพ์ข้อความตอบกลับ...">
+
+                    <!-- ส่ง -->
+                    <button type="submit" class="btn btn-primary">ส่ง</button>
+
+                    <!-- ซ่อนข้อมูล -->
+                    <input type="hidden" id="Userid">
+                    <input type="hidden" id="Botid">
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+    <!-- Modal -->
+
+    <div class="modal fade" id="addToVipModal" tabindex="-1" aria-labelledby="addToVipModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <form id="addToVipForm" class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addToVipModalLabel">เพิ่มเข้า VIP</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="vipChatListContainer" class="row g-2"></div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" id="currentVipTarget">
+                    <button type="submit" class="btn btn-primary">เพิ่มเข้า แท้ก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addOATokenModal" tabindex="-1" aria-labelledby="addOATokenLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="oaTokenForm" class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addOATokenLabel">เพิ่ม LINE OA Token</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="oaTokenInput" class="form-label">Channel Access Token:</label>
+                    <input type="text" class="form-control" id="oaTokenInput" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ยกเลิก</button>
+                    <button type="submit" class="btn btn-primary">บันทึก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <!-- JavaScript toggle logic -->
+    <script>
+     
+
+                                        // เพิ่ม toggle ย่อ/ขยาย
+        document.addEventListener('click', function (e) {
+            if (e.target.classList.contains('toggle-header')) {
+                const targetId = e.target.getAttribute('data-target');
+                if (targetId) {
+                    const list = document.getElementById(targetId);
+                    if (list) list.classList.toggle('d-none');
+                }
+            }
+        });
+    </script>
+
+    <script>
+        document.querySelectorAll(".toggle-header").forEach(header => {
+            header.addEventListener("click", () => {
+                const targetId = header.getAttribute("data-target");
+                const targetList = document.getElementById(targetId);
+                if (targetList) {
+                    targetList.style.display = targetList.style.display === "none" ? "block" : "none";
+                }
+            });
+        });
+    </script>
+    <script>
+        let currentUserId = null;
+        let chatHistories = {}; // เก็บข้อความแยกตาม userId+botDisplayName
+
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/chatHub")
+            .build();
+
+        connection.on("ReceiveMessage", function (userName, message, pictureUrl, timestamp, userId, oaName,BotId) {
+            // สร้าง key ที่ไม่ซ้ำกันสำหรับแต่ละ user+bot
+            const fullKey = `${userId}-${BotId.replace(/\s+/g, '')}`;
+
+            if (!chatHistories[fullKey]) {
+                chatHistories[fullKey] = [];
+            }
+
+            // ตรวจสอบว่า message เป็น URL รูปภาพหรือไม่
+            let isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(message);
+            let messageContent = isImage
+                ? `<img src="${message}" alt="image" style="max-width: 500px; max-height: 350px; border-radius: 4px;" class="clickable-image" data-fullsize="${message}" />`
+                : `<div class="bg-light rounded p-2 px-3 shadow-sm" style="max-width: 300px;">${message}</div>`;
+
+            const item = `
+                <div class="d-flex mb-3">
+                    <img src="${pictureUrl}" class="rounded-circle me-2 flex-shrink-0" width="40" height="40" alt="${userName}">
+                    <div>
+                        <div class="fw-bold mb-1">${userName}</div>
+                        ${messageContent}
+                        <small class="text-muted text-end" style="white-space: nowrap;">${timestamp}</small>
+                    </div>
+                </div>
+            `;
+
+            chatHistories[fullKey].push(item);
+
+            // เช็คว่า user และ bot ตรงกับที่เลือกไว้
+            const selectedKey = document.getElementById("Userid").value + "-" + BotId.replace(/\s+/g, '');
+            const chatHeaderText = document.querySelector("h5").textContent.trim(); // ข้อความใน <h5> ที่แสดงชื่อ bot
+                const normalizedOaName = BotId.replace(/\s+/g, '');
+                const normalizedHeader = chatHeaderText.replace(/\s+/g, '');
+
+                if (currentUserId === userId && normalizedHeader === normalizedOaName) {
+                    document.getElementById("chat-messages").innerHTML += item;
+                }
+
+
+            // จัดการการคลิกที่รูปภาพ
+            let clickableImages = document.querySelectorAll('.clickable-image');
+            clickableImages.forEach(image => {
+                image.addEventListener('click', function () {
+                    const fullSizeImageUrl = image.getAttribute('data-fullsize');
+                    openImageInModal(fullSizeImageUrl);
+                });
+            });
+        });
+
+
+
+        // ฟังก์ชันเปิดรูปใน modal
+        function openImageInModal(imageUrl) {
+            const modalHtml = `
+                <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="imageModalLabel">รูปภาพ</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img src="${imageUrl}" alt="Full Size Image" class="img-fluid" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // เพิ่ม modal ไปที่ body
+            document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+            // แสดง modal
+            const modal = new bootstrap.Modal(document.getElementById('imageModal'));
+            modal.show();
+
+            // ลบ modal หลังจากปิด
+            document.getElementById('imageModal').addEventListener('hidden.bs.modal', function () {
+                document.getElementById('imageModal').remove();
+            });
+        }
+
+        connection.on("UpdateChatList", function (userId, displayName, pictureUrl, lastMessage, timestamp, botDisplayName, BotId) {
+            const chatKey = `${userId}-${botDisplayName.replace(/\s+/g, '')}`;
+
+            // ตรวจสอบว่าอยู่ใน VIP แล้วหรือยัง
+            if (document.getElementById(`chat-${chatKey}`)) {
+                return; // อยู่แล้วใน VIP หรือถูกสร้างแล้ว
+            }
+
+            // ตรวจสอบว่า lastMessage เป็นรูปภาพหรือไม่
+            let isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(lastMessage);
+            let messageContent = isImage
+                ? "ส่งรูปภาพ"
+                : `<div class="text-muted text-truncate" style="max-width: 180px;">${lastMessage}</div>`;
+
+            const itemHtml = `
+                <li class="list-group-item d-flex align-items-start justify-content-between" id="chat-${chatKey}" style="cursor: pointer;">
+                    <div class="d-flex">
+                        <img src="${pictureUrl}" class="rounded-circle me-2 flex-shrink-0" width="40" height="40" alt="${displayName}">
+                        <div>
+                            <div class="fw-bold">
+                                ${displayName}
+                                <br>มาจาก ${botDisplayName}
+                                <br><small class="text-muted">BotId: ${BotId}</small>
+                            </div>
+                            ${messageContent}
+                        </div>
+                    </div>
+                    <div class="text-end">
+                        <input type="checkbox" class="form-check-input make-vip-checkbox" data-user-id="${userId}" data-bot-name="${botDisplayName}" data-bot-id="${BotId}">
+                        <br>
+                        <small class="text-muted" style="white-space: nowrap;">${timestamp}</small>
+                    </div>
+                </li>
+            `;
+
+            const container = document.getElementById("chatItems");
+            container.insertAdjacentHTML('beforeend', itemHtml);
+
+            const li = document.getElementById(`chat-${chatKey}`);
+            li.addEventListener('click', handleChatClick); // ✅ ให้คลิกได้ทุก li
+
+            attachVipCheckboxHandlers(); // ถ้ามีฟังก์ชันนี้ไว้จัดการ checkbox
+        });
+
+                connection.start().catch(function (err) {
+            return console.error(err.toString());
+        });
+        function attachVipCheckboxHandlers() {
+            document.querySelectorAll('.make-vip-checkbox').forEach(function (checkbox) {
+                if (!checkbox.dataset.bound) {
+                    checkbox.dataset.bound = true; // ป้องกันผูกซ้ำ
+                    checkbox.addEventListener('change', function () {
+                        if (this.checked) {
+                            // เมื่อเลือก VIP
+                            const confirmed = confirm('คุณต้องการเพิ่มแชทนี้เป็น VIP หรือไม่?');
+                            if (confirmed) {
+                                const listItem = this.closest('li');
+                                document.getElementById('vipChatItems').appendChild(listItem);
+                            } else {
+                                this.checked = false; // หากไม่ยืนยัน ให้ติ๊กออก
+                            }
+                        } else {
+                            // เมื่อเอาออกจาก VIP
+                            const confirmed = confirm('คุณต้องการเอาแชทนี้ออกจากการเป็น VIP หรือไม่?');
+                            if (confirmed) {
+                                const listItem = this.closest('li');
+                                document.getElementById('chatItems').appendChild(listItem); // หรือเอาออกจาก VIP
+                            } else {
+                                this.checked = true; // หากไม่ยืนยัน ให้ติ๊กไว้
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+
+    </script>
+    <script>
+        document.getElementById("chatItems").addEventListener("click", handleChatClick);
+        document.getElementById("vipChatItems").addEventListener("click", handleChatClick);
+            // เรียกเมื่อฟอร์มสร้าง VIP ถูกส่ง
+        document.getElementById('createVipForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const vipName = document.getElementById('vipNameInput').value.trim();
+            if (vipName) {
+                const sectionContainer = document.getElementById('customVipSections');
+
+                // สร้างหัวข้อ
+                const headerDiv = document.createElement('div');
+                headerDiv.className = 'fw-bold text-warning mt-4 mb-2 d-flex align-items-center toggle-header';
+                headerDiv.style.cursor = 'pointer';
+                const sectionId = `vipGroup-${vipName.replace(/\s+/g, '-')}`;
+                headerDiv.setAttribute('data-target', sectionId);
+
+                headerDiv.innerHTML = `<i class="fa-solid fa-tag me-2"></i> ${vipName} `;
+
+
+                // 🔹 ปุ่ม +
+                const addBtn = document.createElement('button');
+                addBtn.className = 'btn btn-sm btn-outline-success ms-2';
+                addBtn.innerHTML = '+';
+                headerDiv.innerHTML = '<span class="badge bg-secondary ms-2 chat-count">0 แชท</span>';
+                addBtn.setAttribute('data-vip-name', vipName);
+                addBtn.onclick = function () {
+                    openAddToVipModal(vipName);
+                };
+                headerDiv.appendChild(addBtn);
+
+                // กล่องรายการ
+                const ul = document.createElement('ul');
+                ul.className = 'list-group mb-3';
+                ul.id = sectionId;
+
+                const empty = document.createElement('li');
+                empty.className = 'list-group-item text-muted';
+                empty.textContent = 'ไม่มีรายการ';
+                ul.appendChild(empty);
+
+                sectionContainer.appendChild(headerDiv);
+                sectionContainer.appendChild(ul);
+
+                document.getElementById('vipNameInput').value = '';
+                bootstrap.Modal.getInstance(document.getElementById('createVipModal')).hide();
+            }
+        });
+                function openAddToVipModal(vipName) {
+            document.getElementById("currentVipTarget").value = vipName;
+            document.getElementById("addToVipModalLabel").textContent = `เพิ่มเข้า VIP: ${vipName}`;
+
+            const container = document.getElementById("vipChatListContainer");
+            container.innerHTML = ''; // เคลียร์ก่อน
+
+            const chatItems = document.querySelectorAll('#chatItems .list-group-item');
+
+            chatItems.forEach(item => {
+                const displayName = item.querySelector('.fw-bold').childNodes[0].textContent.trim();
+                const imgSrc = item.querySelector('img').src;
+                const userId = item.querySelector('input[type="checkbox"]').dataset.userId;
+                const botDisplayName = item.querySelector('input[type="checkbox"]').dataset.botName; // เพิ่ม botDisplayName
+
+                const col = document.createElement('div');
+                col.className = 'col-md-4';
+
+                col.innerHTML = `
+                    <div class="d-flex align-items-center border rounded p-2">
+                        <img src="${imgSrc}" width="40" height="40" class="rounded-circle me-2" />
+                        <span class="me-auto">${displayName}</span>
+                        <span class="text-muted ms-2">มาจาก ${botDisplayName}</span> <!-- เพิ่ม botDisplayName -->
+                        <input type="checkbox" class="form-check-input vip-select-checkbox" data-user-id="${userId}" data-display-name="${displayName}" data-img="${imgSrc}" data-bot-name="${botDisplayName}">
+                    </div>
+                `;
+
+                container.appendChild(col);
+            });
+
+            new bootstrap.Modal(document.getElementById("addToVipModal")).show();
+        }
+
+                 document.getElementById('addToVipForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const vipName = document.getElementById("currentVipTarget").value;
+            const listId = `vipGroup-${vipName.replace(/\s+/g, '-')}`;
+            const ul = document.getElementById(listId);
+
+            // ลบ "ไม่มีรายการ"
+            ul.querySelectorAll('.text-muted').forEach(el => el.remove());
+
+            const checkboxes = document.querySelectorAll('.vip-select-checkbox:checked');
+            checkboxes.forEach(cb => {
+                const userId = cb.dataset.userId;
+                const name = cb.dataset.displayName;
+                const img = cb.dataset.img;
+
+                // หาตัว li เดิมจาก chatItems
+                const chatKey = `${userId}-${vipName.replace(/\s+/g, '')}`;
+                const originalLi = document.querySelector(`#chatItems li input[data-user-id="${userId}"]`)?.closest('li');
+
+                if (originalLi) {
+                    // ย้ายออกจาก chatItems
+                    originalLi.remove();
+
+                    // clone li ไปใส่ใน vip group (พร้อม click listener)
+                    const cloneLi = originalLi.cloneNode(true);
+                    cloneLi.id = `chat-${chatKey}`;
+                    const cloneCheckbox = cloneLi.querySelector('input[type="checkbox"]');
+                    if (cloneCheckbox) {
+                        cloneCheckbox.checked = true; // ตั้งค่าให้ checkbox ถูกติ๊ก
+                        cloneCheckbox.style.display = 'none'; // ซ่อน checkbox
+                    }
+
+
+                    cloneLi.addEventListener('click', handleChatClick); // 👈 เพิ่ม event
+
+                    ul.appendChild(cloneLi);
+                }
+            });
+
+            bootstrap.Modal.getInstance(document.getElementById("addToVipModal")).hide();
+        });
+
+        function handleChatClick(e) {
+            let target = e.target;
+
+            // วนขึ้นไปหา <li>
+            while (target && target.tagName !== "LI") {
+                target = target.parentNode;
+            }
+
+            if (target) {
+                const checkbox = target.querySelector("input.make-vip-checkbox");
+                const userId = checkbox.getAttribute("data-user-id");
+                const botName = checkbox.getAttribute("data-bot-name");
+                const botId = checkbox.getAttribute("data-bot-id"); // 👈 ใช้ botId ตรงนี้
+
+                console.log('userId:', userId);   // เช็คค่าที่ได้
+                console.log('botName:', botName); // เช็คค่าที่ได้
+                console.log('botId:', botId);     // เช็คค่าที่ได้
+
+                const fullKey = `${userId}-${botId.replace(/\s+/g, '')}`;
+
+                currentUserId = userId;
+                document.getElementById("Userid").value = userId;
+                document.getElementById("Botid").value = botId; // 👈 ใส่ค่าเข้า input
+
+                // อัปเดตชื่อหัวข้อ
+                document.querySelector("h5").innerHTML = `${botName}`;
+
+                document.getElementById("chat-messages").innerHTML = "";
+
+                if (chatHistories[fullKey]) {
+                    chatHistories[fullKey].forEach(msg => {
+                        document.getElementById("chat-messages").innerHTML += msg;
+                    });
+                } else {
+                    console.log('No history found for:', fullKey); // ถ้าไม่มีประวัติ
+                }
+            }
+        }
+
+         document.getElementById("reply-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const message = document.getElementById("reply-text").value;
+            const userId = document.getElementById("Userid").value;
+            const botId = document.getElementById("Botid").value;
+            const fileInput = document.getElementById("reply-file");
+            const file = fileInput.files[0];
+
+            if (!userId || !botId) {
+                alert("กรุณาเลือกแชทก่อนส่งข้อความ");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("userId", userId);
+            formData.append("message", message);
+            formData.append("botId", botId);
+
+            if (file) {
+                formData.append("imageFile", file);
+            }
+
+            fetch("/send-reply", {
+                method: "POST",
+                body: formData
+            }).then(res => {
+                if (res.ok) {
+                    document.getElementById("reply-text").value = "";
+                    fileInput.value = "";
+
+                    const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+                    const item = `
+                        <div class="d-flex justify-content-end mb-3">
+                            <div>
+                                <div class="fw-bold mb-1 text-end">คุณ</div>
+                                <div class="bg-success text-white rounded p-2 px-3 shadow-sm" style="max-width: 300px;">
+                                    ${message}
+                                    <div class="text-end">
+                                        <small class="text-white-50">${timestamp}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                    const fullKey = `${userId}-${botId.replace(/\s+/g, '')}`;
+                    if (!chatHistories[fullKey]) {
+                        chatHistories[fullKey] = [];
+                    }
+                    chatHistories[fullKey].push(item);
+
+                    if (currentUserId === userId) {
+                        document.getElementById("chat-messages").innerHTML += item;
+                    }
+                } else {
+                    alert("ไม่สามารถตอบกลับได้");
+                }
+            }).catch(err => {
+                console.error("เกิดข้อผิดพลาดในการส่งข้อความ:", err);
+                alert("เกิดข้อผิดพลาดในการส่งข้อความ");
+            });
+        });
+
+    </script>
+    <script>
+        document.getElementById("chatSearch").addEventListener("input", function () {
+            const searchText = this.value.toLowerCase();
+            const chatItems = document.querySelectorAll("#chatItems li");
+
+            chatItems.forEach(item => {
+                const name = item.querySelector(".fw-bold")?.innerText.toLowerCase();
+                if (name && name.includes(searchText)) {
+                    item.style.display = "";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        });
+                document.getElementById("oaTokenForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const token = document.getElementById("oaTokenInput").value;
+
+            fetch("/line-oa/add-token", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ token })
+            }).then(res => {
+                if (res.ok) {
+                    alert("เพิ่ม Token สำเร็จ");
+                    document.getElementById("oaTokenInput").value = "";
+                    var modal = bootstrap.Modal.getInstance(document.getElementById("addOATokenModal"));
+                    modal.hide();
+                } else {
+                    alert("เกิดข้อผิดพลาดในการเพิ่ม Token");
+                }
+            });
+        });
+
+    </script>
+
+}
+

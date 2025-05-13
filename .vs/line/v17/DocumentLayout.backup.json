@@ -1,46 +1,101 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\USER069\\source\\repos\\line\\",
+  "WorkspaceRootPath": "C:\\line-main\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\users\\user069\\source\\repos\\line\\line\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\line-main\\line\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\line-main\\line\\controllers\\lineoacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\lineoacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\line-main\\line\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\users\\user069\\source\\repos\\line\\line\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\users\\user069\\source\\repos\\line\\line\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\users\\user069\\source\\repos\\line\\line\\models\\replyformdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\replyformdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\users\\user069\\source\\repos\\line\\line\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\users\\user069\\source\\repos\\line\\line\\models\\lineuserprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\lineuserprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\users\\user069\\source\\repos\\line\\line\\models\\chat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\chat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\users\\user069\\source\\repos\\line\\line\\models\\chatstorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\chatstorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\users\\user069\\source\\repos\\line\\line\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\line-main\\line\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\users\\user069\\source\\repos\\line\\line\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\line-main\\line\\models\\replyformdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\replyformdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\line-main\\line\\models\\oatablemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\oatablemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\UserPRO\\.nuget\\packages\\linebotsdk\\2.14.40\\Readme.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\line-main\\line\\models\\stickerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\stickerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\line-main\\line\\views\\home\\alllineoa.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\views\\home\\alllineoa.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\line-main\\line\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\line-main\\line\\models\\oasdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\oasdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\line-main\\line\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\line-main\\line\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\line-main\\line\\line.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\line.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\line-main\\line\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\line-main\\line\\models\\lineoatokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\lineoatokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\line-main\\line\\controllers\\linelogincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\linelogincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\line-main\\line\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\line-main\\line\\models\\oatablecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\oatablecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\line-main\\line\\models\\oaaccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\oaaccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\line-main\\line\\models\\lineuserprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\lineuserprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\line-main\\line\\line.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\line.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\line-main\\line\\models\\chat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\chat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\line-main\\line\\models\\chatstorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\chatstorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,7 +105,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,47 +113,251 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\USER069\\source\\repos\\line\\line\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "line\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\USER069\\source\\repos\\line\\line\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "line\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAABgAAAB3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-23T09:06:47.187Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ReplyFormDto.cs",
-              "DocumentMoniker": "C:\\Users\\USER069\\source\\repos\\line\\line\\Models\\ReplyFormDto.cs",
-              "RelativeDocumentMoniker": "line\\Models\\ReplyFormDto.cs",
-              "ToolTip": "C:\\Users\\USER069\\source\\repos\\line\\line\\Models\\ReplyFormDto.cs",
-              "RelativeToolTip": "line\\Models\\ReplyFormDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "OAsData.cs",
+              "DocumentMoniker": "C:\\line-main\\line\\Models\\OAsData.cs",
+              "RelativeDocumentMoniker": "line\\Models\\OAsData.cs",
+              "ToolTip": "C:\\line-main\\line\\Models\\OAsData.cs",
+              "RelativeToolTip": "line\\Models\\OAsData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T07:03:04.591Z"
+              "WhenOpened": "2025-05-04T10:53:16.973Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "C:\\line-main\\line\\Views\\Home\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "line\\Views\\Home\\Privacy.cshtml",
+              "ToolTip": "C:\\line-main\\line\\Views\\Home\\Privacy.cshtml",
+              "RelativeToolTip": "line\\Views\\Home\\Privacy.cshtml",
+              "ViewState": "AgIAAMMAAAAAAAAAAAAAAEwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-01T14:03:37.539Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "site.css",
-              "DocumentMoniker": "C:\\Users\\USER069\\source\\repos\\line\\line\\wwwroot\\css\\site.css",
+              "DocumentMoniker": "C:\\line-main\\line\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "line\\wwwroot\\css\\site.css",
-              "ToolTip": "C:\\Users\\USER069\\source\\repos\\line\\line\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\line-main\\line\\wwwroot\\css\\site.css",
               "RelativeToolTip": "line\\wwwroot\\css\\site.css",
-              "ViewState": "AgIAAAgAAAAAAAAAAADwvyAAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAIwCcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2025-04-23T06:46:15.77Z"
             },
             {
               "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\line-main\\line\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "line\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\line-main\\line\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "line\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-23T09:06:47.187Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\line-main\\line\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "line\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\line-main\\line\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "line\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAANcAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T02:52:21.771Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LineOAController.cs",
+              "DocumentMoniker": "C:\\line-main\\line\\Controllers\\LineOAController.cs",
+              "RelativeDocumentMoniker": "line\\Controllers\\LineOAController.cs",
+              "ToolTip": "C:\\line-main\\line\\Controllers\\LineOAController.cs",
+              "RelativeToolTip": "line\\Controllers\\LineOAController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwEQAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T17:48:25.427Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ReplyFormDto.cs",
+              "DocumentMoniker": "C:\\line-main\\line\\Models\\ReplyFormDto.cs",
+              "RelativeDocumentMoniker": "line\\Models\\ReplyFormDto.cs",
+              "ToolTip": "C:\\line-main\\line\\Models\\ReplyFormDto.cs",
+              "RelativeToolTip": "line\\Models\\ReplyFormDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T07:03:04.591Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Readme.txt",
+              "DocumentMoniker": "C:\\Users\\UserPRO\\.nuget\\packages\\linebotsdk\\2.14.40\\Readme.txt",
+              "RelativeDocumentMoniker": "..\\Users\\UserPRO\\.nuget\\packages\\linebotsdk\\2.14.40\\Readme.txt",
+              "ToolTip": "C:\\Users\\UserPRO\\.nuget\\packages\\linebotsdk\\2.14.40\\Readme.txt",
+              "RelativeToolTip": "..\\Users\\UserPRO\\.nuget\\packages\\linebotsdk\\2.14.40\\Readme.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-05-04T15:39:59.945Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ChatHub.cs",
+              "DocumentMoniker": "C:\\line-main\\line\\Hubs\\ChatHub.cs",
+              "RelativeDocumentMoniker": "line\\Hubs\\ChatHub.cs",
+              "ToolTip": "C:\\line-main\\line\\Hubs\\ChatHub.cs",
+              "RelativeToolTip": "line\\Hubs\\ChatHub.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T04:38:44.072Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "StickerRequest.cs",
+              "DocumentMoniker": "C:\\line-main\\line\\Models\\StickerRequest.cs",
+              "RelativeDocumentMoniker": "line\\Models\\StickerRequest.cs",
+              "ToolTip": "C:\\line-main\\line\\Models\\StickerRequest.cs",
+              "RelativeToolTip": "line\\Models\\StickerRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T15:35:35.648Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\line-main\\line\\Program.cs",
+              "RelativeDocumentMoniker": "line\\Program.cs",
+              "ToolTip": "C:\\line-main\\line\\Program.cs",
+              "RelativeToolTip": "line\\Program.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAgwCkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T02:57:42.857Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "oatablemodel.cs",
+              "DocumentMoniker": "C:\\line-main\\line\\Models\\oatablemodel.cs",
+              "RelativeDocumentMoniker": "line\\Models\\oatablemodel.cs",
+              "ToolTip": "C:\\line-main\\line\\Models\\oatablemodel.cs",
+              "RelativeToolTip": "line\\Models\\oatablemodel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T14:21:29.444Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "alllineoa.cshtml",
+              "DocumentMoniker": "C:\\line-main\\line\\Views\\Home\\alllineoa.cshtml",
+              "RelativeDocumentMoniker": "line\\Views\\Home\\alllineoa.cshtml",
+              "ToolTip": "C:\\line-main\\line\\Views\\Home\\alllineoa.cshtml",
+              "RelativeToolTip": "line\\Views\\Home\\alllineoa.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-01T14:28:28.523Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\line-main\\line\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "line\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\line-main\\line\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "line\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAANAQAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-23T02:47:55.574Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "LineOATokenDto.cs",
+              "DocumentMoniker": "C:\\line-main\\line\\Models\\LineOATokenDto.cs",
+              "RelativeDocumentMoniker": "line\\Models\\LineOATokenDto.cs",
+              "ToolTip": "C:\\line-main\\line\\Models\\LineOATokenDto.cs",
+              "RelativeToolTip": "line\\Models\\LineOATokenDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T12:12:31.207Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "line.csproj",
+              "DocumentMoniker": "C:\\line-main\\line\\line.csproj",
+              "RelativeDocumentMoniker": "line\\line.csproj",
+              "ToolTip": "C:\\line-main\\line\\line.csproj",
+              "RelativeToolTip": "line\\line.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-02T12:01:40.795Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\line-main\\line\\appsettings.json",
+              "RelativeDocumentMoniker": "line\\appsettings.json",
+              "ToolTip": "C:\\line-main\\line\\appsettings.json",
+              "RelativeToolTip": "line\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-02T12:01:38.995Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "line",
+              "DocumentMoniker": "C:\\line-main\\line\\line.csproj",
+              "RelativeDocumentMoniker": "line\\line.csproj",
+              "ToolTip": "C:\\line-main\\line\\line.csproj",
+              "RelativeToolTip": "line\\line.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-03T15:07:42.349Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "LineLoginController.cs",
+              "DocumentMoniker": "C:\\line-main\\line\\Controllers\\LineLoginController.cs",
+              "RelativeDocumentMoniker": "line\\Controllers\\LineLoginController.cs",
+              "ToolTip": "C:\\line-main\\line\\Controllers\\LineLoginController.cs",
+              "RelativeToolTip": "line\\Controllers\\LineLoginController.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAUwD8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T15:07:52.307Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "oatablecontext.cs",
+              "DocumentMoniker": "C:\\line-main\\line\\Models\\oatablecontext.cs",
+              "RelativeDocumentMoniker": "line\\Models\\oatablecontext.cs",
+              "ToolTip": "C:\\line-main\\line\\Models\\oatablecontext.cs",
+              "RelativeToolTip": "line\\Models\\oatablecontext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T14:20:36.445Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
               "Title": "LineUserProfile.cs",
-              "DocumentMoniker": "C:\\Users\\USER069\\source\\repos\\line\\line\\Models\\LineUserProfile.cs",
+              "DocumentMoniker": "C:\\line-main\\line\\Models\\LineUserProfile.cs",
               "RelativeDocumentMoniker": "line\\Models\\LineUserProfile.cs",
-              "ToolTip": "C:\\Users\\USER069\\source\\repos\\line\\line\\Models\\LineUserProfile.cs",
+              "ToolTip": "C:\\line-main\\line\\Models\\LineUserProfile.cs",
               "RelativeToolTip": "line\\Models\\LineUserProfile.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -106,47 +365,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ChatHub.cs",
-              "DocumentMoniker": "C:\\Users\\USER069\\source\\repos\\line\\line\\Hubs\\ChatHub.cs",
-              "RelativeDocumentMoniker": "line\\Hubs\\ChatHub.cs",
-              "ToolTip": "C:\\Users\\USER069\\source\\repos\\line\\line\\Hubs\\ChatHub.cs",
-              "RelativeToolTip": "line\\Hubs\\ChatHub.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 19,
+              "Title": "OAAccount.cs",
+              "DocumentMoniker": "C:\\line-main\\line\\Models\\OAAccount.cs",
+              "RelativeDocumentMoniker": "line\\Models\\OAAccount.cs",
+              "ToolTip": "C:\\line-main\\line\\Models\\OAAccount.cs",
+              "RelativeToolTip": "line\\Models\\OAAccount.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T04:38:44.072Z"
+              "WhenOpened": "2025-05-01T15:25:13.182Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Chat.cs",
-              "DocumentMoniker": "C:\\Users\\USER069\\source\\repos\\line\\line\\Models\\Chat.cs",
-              "RelativeDocumentMoniker": "line\\Models\\Chat.cs",
-              "ToolTip": "C:\\Users\\USER069\\source\\repos\\line\\line\\Models\\Chat.cs",
-              "RelativeToolTip": "line\\Models\\Chat.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T03:12:23.993Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\USER069\\source\\repos\\line\\line\\Program.cs",
-              "RelativeDocumentMoniker": "line\\Program.cs",
-              "ToolTip": "C:\\Users\\USER069\\source\\repos\\line\\line\\Program.cs",
-              "RelativeToolTip": "line\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T02:57:42.857Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 23,
               "Title": "ChatStorage.cs",
-              "DocumentMoniker": "C:\\Users\\USER069\\source\\repos\\line\\line\\Models\\ChatStorage.cs",
+              "DocumentMoniker": "C:\\line-main\\line\\Models\\ChatStorage.cs",
               "RelativeDocumentMoniker": "line\\Models\\ChatStorage.cs",
-              "ToolTip": "C:\\Users\\USER069\\source\\repos\\line\\line\\Models\\ChatStorage.cs",
+              "ToolTip": "C:\\line-main\\line\\Models\\ChatStorage.cs",
               "RelativeToolTip": "line\\Models\\ChatStorage.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -154,29 +389,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\USER069\\source\\repos\\line\\line\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "line\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\USER069\\source\\repos\\line\\line\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "line\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAG8AAAAAAAAAAAAmwIgAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 22,
+              "Title": "Chat.cs",
+              "DocumentMoniker": "C:\\line-main\\line\\Models\\Chat.cs",
+              "RelativeDocumentMoniker": "line\\Models\\Chat.cs",
+              "ToolTip": "C:\\line-main\\line\\Models\\Chat.cs",
+              "RelativeToolTip": "line\\Models\\Chat.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T02:52:21.771Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\USER069\\source\\repos\\line\\line\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "line\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\USER069\\source\\repos\\line\\line\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "line\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAAAIsAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-23T02:47:55.574Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-23T03:12:23.993Z"
             },
             {
               "$type": "Bookmark",
