@@ -9,9 +9,17 @@
     var displayNameList = displayNames.ToString().Split(','); // แยกค่า displayName ออก
 }
 @{
-    var timeout = ViewBag.Timeout as DateTime?;
+    var timeoutString = Context.Session.GetString("KeyTimeout");
+    DateTime? timeout = null;
+    if (!string.IsNullOrEmpty(timeoutString) && DateTime.TryParse(timeoutString, out var parsed))
+    {
+        timeout = parsed;
+    }
+
     var isExpired = timeout == null || timeout <= DateTime.UtcNow;
 }
+@* <h3>หมดอายุ: @(timeout?.ToString("yyyy-MM-dd HH:mm:ss")) UTC</h3>
+ *@
 <div style ="text-align:center">
     <h3>line oa ที่เลือก</h3>
     <span>Display Name:</span>

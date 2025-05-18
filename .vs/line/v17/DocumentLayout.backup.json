@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\lineproject\\line\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -27,24 +43,8 @@
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\views\\accountsetting\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\models\\userkeymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\userkeymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -165,7 +165,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -177,39 +177,116 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\lineproject\\line\\line\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "line\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\lineproject\\line\\line\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "line\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAHsAAAAAAAAAAAAawI8AAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-23T09:06:47.187Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 3,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "line\\Controllers\\AccountController.cs",
               "ToolTip": "C:\\lineproject\\line\\line\\Controllers\\AccountController.cs",
               "RelativeToolTip": "line\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAwwFoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T12:00:15.389Z"
+              "WhenOpened": "2025-05-17T12:00:15.389Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "Privacy.cshtml",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Views\\Home\\Privacy.cshtml",
               "RelativeDocumentMoniker": "line\\Views\\Home\\Privacy.cshtml",
               "ToolTip": "C:\\lineproject\\line\\line\\Views\\Home\\Privacy.cshtml",
               "RelativeToolTip": "line\\Views\\Home\\Privacy.cshtml",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAawGQAAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-01T14:03:37.539Z"
+              "WhenOpened": "2025-05-01T14:03:37.539Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UserKeyModel.cs",
+              "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\UserKeyModel.cs",
+              "RelativeDocumentMoniker": "line\\Models\\UserKeyModel.cs",
+              "ToolTip": "C:\\lineproject\\line\\line\\Models\\UserKeyModel.cs",
+              "RelativeToolTip": "line\\Models\\UserKeyModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-17T18:30:26.176Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\lineproject\\line\\line\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "line\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\lineproject\\line\\line\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "line\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAMwEIAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-17T17:22:46.971Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\lineproject\\line\\line\\Program.cs",
+              "RelativeDocumentMoniker": "line\\Program.cs",
+              "ToolTip": "C:\\lineproject\\line\\line\\Program.cs",
+              "RelativeToolTip": "line\\Program.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T02:57:42.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\lineproject\\line\\line\\Dockerfile",
+              "RelativeDocumentMoniker": "line\\Dockerfile",
+              "ToolTip": "C:\\lineproject\\line\\line\\Dockerfile",
+              "RelativeToolTip": "line\\Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-05-18T10:09:51.202Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\lineproject\\line\\line\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "line\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\lineproject\\line\\line\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "line\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAUwDoAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T02:52:21.771Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\lineproject\\line\\line\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "line\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\lineproject\\line\\line\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "line\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-23T09:06:47.187Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\lineproject\\line\\line\\Views\\Admin\\Index.cshtml",
+              "RelativeDocumentMoniker": "line\\Views\\Admin\\Index.cshtml",
+              "ToolTip": "C:\\lineproject\\line\\line\\Views\\Admin\\Index.cshtml",
+              "RelativeToolTip": "line\\Views\\Admin\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAK8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-17T17:23:29.885Z"
             },
             {
               "$type": "Document",
@@ -225,70 +302,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\lineproject\\line\\line\\Views\\Admin\\Index.cshtml",
-              "RelativeDocumentMoniker": "line\\Views\\Admin\\Index.cshtml",
-              "ToolTip": "C:\\lineproject\\line\\line\\Views\\Admin\\Index.cshtml",
-              "RelativeToolTip": "line\\Views\\Admin\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAK8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-17T17:23:29.885Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "UserKeyModel.cs",
-              "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\UserKeyModel.cs",
-              "RelativeDocumentMoniker": "line\\Models\\UserKeyModel.cs",
-              "ToolTip": "C:\\lineproject\\line\\line\\Models\\UserKeyModel.cs",
-              "RelativeToolTip": "line\\Models\\UserKeyModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T18:30:26.176Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "C:\\lineproject\\line\\line\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "line\\Controllers\\AdminController.cs",
-              "ToolTip": "C:\\lineproject\\line\\line\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "line\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAMwEIAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T17:22:46.971Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\lineproject\\line\\line\\Program.cs",
-              "RelativeDocumentMoniker": "line\\Program.cs",
-              "ToolTip": "C:\\lineproject\\line\\line\\Program.cs",
-              "RelativeToolTip": "line\\Program.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAASwB8AAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T02:57:42.857Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Dockerfile",
-              "DocumentMoniker": "C:\\lineproject\\line\\line\\Dockerfile",
-              "RelativeDocumentMoniker": "line\\Dockerfile",
-              "ToolTip": "C:\\lineproject\\line\\line\\Dockerfile",
-              "RelativeToolTip": "line\\Dockerfile",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-05-18T10:09:51.202Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\appsettings.json",
               "RelativeDocumentMoniker": "line\\appsettings.json",
@@ -296,20 +310,7 @@
               "RelativeToolTip": "line\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-02T12:01:38.995Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\lineproject\\line\\line\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "line\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\lineproject\\line\\line\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "line\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAIwC8AAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T02:52:21.771Z"
+              "WhenOpened": "2025-05-02T12:01:38.995Z"
             },
             {
               "$type": "Document",
@@ -325,7 +326,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Views\\AccountSetting\\Index.cshtml",
               "RelativeDocumentMoniker": "line\\Views\\AccountSetting\\Index.cshtml",
