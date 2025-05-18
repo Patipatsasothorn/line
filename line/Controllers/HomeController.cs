@@ -30,10 +30,14 @@ namespace line.Controllers
 
         public IActionResult Index()
         {
-
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("Username")))
+            {
+                return RedirectToAction("Login", "Account");
+            }
 
             return View();
         }
+
         public IActionResult alllineoa()
         {
 
@@ -45,6 +49,7 @@ namespace line.Controllers
         {
             var chats = ChatStorage.GetAll();
             var oaAccounts = OAAccountStorage.GetAll();
+
 
             ViewBag.OAAccounts = oaAccounts;
 
@@ -65,7 +70,6 @@ namespace line.Controllers
                 // ถ้าไม่มี userId ใน session
                 return BadRequest("UserId not found in session.");
             }
-
             // ดึงข้อมูลจาก webhook
             foreach (var evt in data.events)
             {

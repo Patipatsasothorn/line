@@ -1,4 +1,26 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var currentController = ViewContext.RouteData.Values["Controller"]?.ToString();
+    var currentAction = ViewContext.RouteData.Values["Action"]?.ToString();
+    var isAccountLoginOrRegister = currentController == "Account" &&
+                                   (currentAction == "Login" || currentAction == "Register");
+
+    var isLoggedInLine = !string.IsNullOrEmpty(Context.Session.GetString("LINE_DisplayName"));
+    var isLoggedInWeb = !string.IsNullOrEmpty(Context.Session.GetString("Username"));
+}
+@{
+    var timeoutStr = Context.Session.GetString("KeyTimeout");
+    DateTime? timeout = null;
+
+    if (!string.IsNullOrEmpty(timeoutStr) && DateTime.TryParse(timeoutStr, out var parsed))
+    {
+        timeout = parsed;
+    }
+    ViewBag.Timeout = timeout;
+
+}
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -8,46 +30,82 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/line.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.7.2/css/pro.min.css"/>
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.7.2/css/pro.min.css" />
     <script src="https://d.line-scdn.net/liff/edge/versions/2.0.0/sdk.js"></script>
-
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <!-- ลบส่วนของ logo และ button -->
-                <!-- โค้ดแสดงชื่อและรูปโปรไฟล์ของผู้ใช้ ที่มุมซ้าย -->
                 <div class="d-flex align-items-center justify-content-between w-100">
-                    @if (!string.IsNullOrEmpty(Context.Session.GetString("LINE_DisplayName")))
+
+                    @if (!isAccountLoginOrRegister)
                     {
-                        var name = Context.Session.GetString("LINE_DisplayName");
-                        var pic = Context.Session.GetString("LINE_PictureUrl");
-                        var userId = Context.Session.GetString("LINE_UserId");  // ✅ ดึง userId จาก Session
+                        var webUsername = Context.Session.GetString("Username");
+@*                         var isLoggedInWeb = !string.IsNullOrEmpty(webUsername);
+ *@
+                        if (isLoggedInLine)
+                        {
+                            var name = Context.Session.GetString("LINE_DisplayName");
+                            var pic = Context.Session.GetString("LINE_PictureUrl");
+                            var userId = Context.Session.GetString("LINE_UserId");
 
-                        <div class="d-flex align-items-center gap-2">
-
-                            <img src="@pic" alt="Profile" width="40" height="40" class="rounded-circle me-2" />
-                            <div>
-                                <strong>@name</strong><br />
-                                <small class="text-muted">UserID: @userId</small>  <!-- ✅ แสดง userId -->
+                            <div class="d-flex align-items-center gap-2">
+                                <img src="@pic" alt="Profile" width="40" height="40" class="rounded-circle me-2" />
+                                <div>
+                                    <strong>@name</strong><br />
+                                    <small class="text-muted">UserID: @userId</small>
+                                </div>
                             </div>
-                        </div>
-                        <a href="/LineLogin/Logout" class="btn btn-danger btn-sm ms-3">Logout</a>
-                    }
-                    else
-                    {
-                        <a href="/LineLogin/Login" class="btn btn-success btn-lg shadow d-flex align-items-center px-4 py-2 text-white" style="border-radius: 50px;">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE" width="30" height="30" class="me-2">
-                            <strong>Login with LINE</strong>
-                        </a>
+                        }
+
+                        if (isLoggedInWeb)
+                        {
+                            <div class="mt-2 d-flex align-items-center gap-2">
+                                <strong>ผู้ใช้เว็บ: @webUsername</strong>
+
+                                @if (timeout != null)
+                                {
+                                    <span class="badge bg-warning text-dark" id="countdownTimer" data-timeout="@timeout.Value.ToString("o")">
+                                        กำลังโหลดเวลา...
+                                    </span>
+                                }
+                            </div>
+                            <a class="btn btn-outline-primary btn-sm ms-3" href="@Url.Action("Index", "AccountSetting")">ตั้งค่าบัญชี</a>
+
+                        }
+
+                        if (isLoggedInLine || isLoggedInWeb)
+                        {
+                            <div class="d-flex gap-2 ms-3">
+                                @* ปุ่ม Logout LINE ถ้า login LINE *@
+                                @if (isLoggedInLine)
+                                {
+                                    <a href="/LineLogin/Logout" class="btn btn-danger btn-sm">
+                                        Logout (LINE)
+                                    </a>
+                                }
+
+                                @* ปุ่ม Logout เว็บ *@
+                                <form method="post" asp-controller="Account" asp-action="LogoutFromWeb" class="mb-0">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-secondary btn-sm">Logout (เว็บ)</button>
+                                </form>
+                            </div>
+                        }
+                        else
+                        {
+                            <a href="/LineLogin/Login" class="btn btn-success btn-lg shadow d-flex align-items-center px-4 py-2 text-white" style="border-radius: 50px;">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE" width="30" height="30" class="me-2">
+                                <strong>Login with LINE</strong>
+                            </a>
+                        }
                     }
                 </div>
-
             </div>
         </nav>
-
     </header>
+
     <div class="container-fluid">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -59,9 +117,46 @@
             &copy; 2025 - line - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        (function () {
+            const countdownElem = document.getElementById("countdownTimer");
+            if (!countdownElem) return;
+
+            const timeoutISO = countdownElem.dataset.timeout;
+            const timeout = new Date(timeoutISO);
+            const now = new Date();
+            let remainingSeconds = Math.floor((timeout - now) / 1000);
+
+            function updateCountdown() {
+                if (remainingSeconds <= 0) {
+                    countdownElem.innerText = "Key หมดอายุแล้ว";
+                    countdownElem.classList.remove("bg-warning");
+                    countdownElem.classList.add("bg-danger");
+
+                    alert("Key หมดอายุแล้ว กรุณาเข้าสู่ระบบใหม่");
+                    window.location.href = "Account/login"; // เปลี่ยน URL ตามหน้า login ของคุณ
+
+                    return;
+                }
+
+                const hours = Math.floor(remainingSeconds / 3600);
+                const minutes = Math.floor((remainingSeconds % 3600) / 60);
+                const seconds = remainingSeconds % 60;
+
+                countdownElem.innerText =
+                    `Key หมดอายุใน: ${hours} ชม ${minutes} นาที ${seconds} วินาที`;
+
+                remainingSeconds--;
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        })();
+    </script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

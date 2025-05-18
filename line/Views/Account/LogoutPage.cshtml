@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "ออกจากระบบเว็บ";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <div class="card shadow p-4">
+                <h3 class="mb-4">คุณต้องการออกจากระบบเว็บไซต์ใช่ไหม?</h3>
+                <form asp-action="LogoutFromWeb" method="post">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-danger btn-lg px-5">ออกจากระบบเว็บไซต์</button>
+                </form>
+                <a href="/" class="btn btn-secondary mt-3">กลับหน้าหลัก</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>เข้าสู่ระบบ</h4>
+                </div>
+
+                @if (ViewBag.Error != null)
+                {
+                    <div class="text-danger mt-3 text-center">@ViewBag.Error</div>
+                }
+
+                <!-- Modal สำหรับรหัสลับแอดมิน -->
+                <div class="modal fade" id="adminModal" tabindex="-1" aria-labelledby="adminModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form id="adminSecretForm">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="adminModalLabel">ยืนยันรหัสลับ</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <label for="adminSecret">กรอกรหัสลับ:</label>
+                                    <input type="password" class="form-control" id="adminSecret" required />
+                                    <div id="secretError" class="text-danger mt-2 d-none">รหัสลับไม่ถูกต้อง</div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">ยืนยัน</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <div class="mb-3">
+                            <label>ชื่อผู้ใช้</label>
+                            <input type="text" name="username" class="form-control" required />
+                        </div>
+                        <div class="mb-3">
+                            <label>รหัสผ่าน</label>
+                            <input type="password" name="password" class="form-control" required />
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">เข้าสู่ระบบ</button>
+                        </div>
+                        <!-- ใต้ปุ่มเข้าสู่ระบบ -->
+                        <p class="text-center">
+                            ยังไม่มีบัญชี? <a href="@Url.Action("Register", "Account")">สมัครที่นี่</a><br />
+                            ต้องการเป็นแอดมิน? <a href="#" data-bs-toggle="modal" data-bs-target="#adminModal">สมัครแอดมิน</a>
+                        </p>
+
+                        @if (ViewBag.Error != null)
+                        {
+                            <div class="text-danger mt-3 text-center">@ViewBag.Error</div>
+                        }
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        document.getElementById('adminSecretForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const secretInput = document.getElementById('adminSecret').value;
+            const secretError = document.getElementById('secretError');
+
+            if (secretInput === 'Admin123456') {
+                // ไปหน้า RegisterAdmin
+                window.location.href = '@Url.Action("RegisterAdmin", "Account")';
+            } else {
+                secretError.classList.remove('d-none');
+            }
+        });
+    </script>
+}

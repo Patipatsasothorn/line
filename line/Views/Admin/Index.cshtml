@@ -1,0 +1,193 @@
+﻿@{
+    ViewBag.Title = "แอดมินแดชบอร์ด";
+    var username = Context.Session.GetString("Username");
+}
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-dark text-white">
+            <h3>แดชบอร์ดผู้ดูแลระบบ</h3>
+        </div>
+        <div class="card-body">
+            <p>สวัสดีแอดมิน, @username!</p>
+            <p>คุณเข้าสู่ระบบด้วยสิทธิ์แอดมิน</p>
+
+            <div class="row align-items-center g-2">
+                <div class="col-auto">
+                    <input type="text" class="form-control" id="keyInput" placeholder="คีย์" readonly />
+                </div>
+
+                <div class="col-auto">
+                    <input type="number" class="form-control" id="timeInput" min="1" value="1" />
+                </div>
+                <div class="col-auto">
+                    <select class="form-select" id="timeUnitSelect">
+                        <option value="วัน">วัน</option>
+                        <option value="ชม.">ชม.</option>
+                        <option value="นาที">นาที</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary" id="generateKeyBtn" type="button">กดเพื่อสร้างคีย์</button>
+                </div>
+            </div>
+            <hr />
+            <h5>รายการคีย์ทั้งหมด</h5>
+
+            <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+                <table class="table table-bordered table-hover table-sm">
+                    <thead class="table-dark text-center">
+                        <tr>
+                            <th>คีย์</th>
+                            <th>ผู้สร้าง</th>
+                            <th>เวลาสร้าง</th>
+                            <th>ระยะเวลา</th>
+                            <th>ผู้ใช้คีย์ (Useru)</th>  <!-- เพิ่มคอลัมน์นี้ -->
+                            <th>วันหมดอายุ</th>         <!-- เพิ่มคอลัมน์นี้ -->
+                            <th></th>         <!-- เพิ่มคอลัมน์นี้ -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.UserKeys != null)
+                        {
+                            foreach (var item in (List<UserKeyModel>)ViewBag.UserKeys)
+                            {
+                                <tr class="text-center align-middle">
+                                    <td>@item.Key</td>
+                                    <td>@item.UserCreate</td>
+                                    <td>@item.CreateTime.ToString("yyyy-MM-dd HH:mm")</td>
+                                    <td>@item.SetTime</td>
+                                    <td>@item.Useru</td>
+                                    <td>@(string.IsNullOrEmpty(item.Timeout) ? "-" : item.Timeout)</td>
+                                    <td>
+                                        <button class="btn btn-danger btn-sm btn-delete-key" data-key="@item.Key">ลบ</button>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="7" class="text-center text-muted">ไม่พบข้อมูลคีย์</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-2 text-danger" id="errorMsg" style="display:none;"></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.btn-delete-key').click(function () {
+                const keyToDelete = $(this).data('key');
+                if (!confirm(`คุณต้องการลบคีย์ "${keyToDelete}" ใช่หรือไม่?`)) {
+                    return;
+                }
+
+                const token = $('input[name="__RequestVerificationToken"]').val(); // ถ้าเปิด AntiForgery
+
+                $.ajax({
+                    url: '/Admin/DeleteKey',
+                    method: 'POST',
+                    data: {
+                        key: keyToDelete,
+                        __RequestVerificationToken: token // ถ้าเปิด AntiForgery
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            alert('ลบข้อมูลสำเร็จ');
+                            location.reload(); // รีเฟรชหน้าเพื่อโหลดข้อมูลใหม่
+                        } else {
+                            alert('ลบข้อมูลไม่สำเร็จ: ' + response.message);
+                        }
+                    },
+                    error: function () {
+                        alert('เกิดข้อผิดพลาดในการเชื่อมต่อ');
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        document.getElementById('generateKeyBtn').addEventListener('click', function () {
+            function generateRandomKey(length) {
+                const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                let result = '';
+                for (let i = 0; i < length; i++) {
+                    result += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
+                return result;
+            }
+            document.getElementById('keyInput').value = generateRandomKey(16);
+            clearError();
+        });
+
+        document.getElementById('timeInput').addEventListener('input', validateTime);
+        document.getElementById('timeUnitSelect').addEventListener('change', validateTime);
+
+        function validateTime() {
+            const timeInput = document.getElementById('timeInput');
+            const errorMsg = document.getElementById('errorMsg');
+
+            if (timeInput.value < 1) {
+                errorMsg.style.display = 'block';
+                errorMsg.textContent = 'กรุณากรอกจำนวนอย่างน้อย 1';
+                timeInput.value = 1;
+            } else {
+                clearError();
+            }
+        }
+
+        function clearError() {
+            const errorMsg = document.getElementById('errorMsg');
+            errorMsg.style.display = 'none';
+            errorMsg.textContent = '';
+        }
+
+        function showError(msg) {
+            const errorMsg = document.getElementById('errorMsg');
+            errorMsg.style.display = 'block';
+            errorMsg.textContent = msg;
+        }
+    </script>
+    <script>
+        $('#generateKeyBtn').on('click', function () {
+            const timeValue = $('#timeInput').val();
+            const timeUnit = $('#timeUnitSelect').val();
+            const token = $('input[name="__RequestVerificationToken"]').val(); // ถ้าเปิด AntiForgery
+
+            $.ajax({
+                url: '/Admin/GenerateKey',
+                method: 'POST',
+                data: {
+                    timeValue: timeValue,
+                    timeUnit: timeUnit,
+                    __RequestVerificationToken: token // ถ้ามีเปิด AntiForgery
+                },
+                success: function (data) {
+                    if (data.success) {
+                        $('#keyInput').val(data.key);
+                        clearError();
+
+                        // ✅ รีเฟรชหน้าเว็บ 1 ครั้ง
+                        setTimeout(() => {
+                            location.reload();
+                        }, 300); // รอ 300 มิลลิวินาทีก่อนรีโหลด (เผื่อเห็นคีย์แว้บเดียว)
+                    } else {
+                        showError("ไม่สามารถสร้างคีย์ได้");
+                    }
+                },
+                error: function () {
+                    showError("เกิดข้อผิดพลาดในการเชื่อมต่อ");
+                }
+            });
+        });
+    </script>
+
+
+}

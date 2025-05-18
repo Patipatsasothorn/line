@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "ตั้งค่าบัญชี";
+}
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-info text-white">
+            <h4>ตั้งค่าบัญชี</h4>
+        </div>
+        <div class="card-body text-center">
+            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" width="100" class="rounded-circle mb-3" />
+            <h5>ชื่อผู้ใช้: @ViewBag.Username</h5>
+
+            <form method="post" asp-action="SubmitKey" asp-controller="AccountSetting" class="mt-4">
+                <div class="mb-3">
+                    <label>กรอก Key </label>
+                    <input type="text" name="key" class="form-control" required />
+                </div>
+                <button type="submit" class="btn btn-primary">ยืนยัน Key</button>
+            </form>
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger mt-3">@ViewBag.Error</div>
+            }
+
+            @if (ViewBag.Success != null)
+            {
+                <div class="alert alert-success mt-3">@ViewBag.Success</div>
+                @if (ViewBag.Timeout != null)
+                {
+                    <p class="mt-2 text-muted">Key นี้จะหมดอายุใน: <strong>@((DateTime)ViewBag.Timeout)</strong></p>
+                }
+            }
+        </div>
+    </div>
+</div>
