@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Newtonsoft.Json
+
+@{
     ViewData["Title"] = "Privacy Policy";
 
 }
@@ -31,7 +33,6 @@
     }
 
 </div>
-
 <div class="container-fluid mt-4" style="height: 90vh;">
     <div class="modal fade" id="createVipModal" tabindex="-1" aria-labelledby="createVipModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -103,10 +104,20 @@
             <div class="p-2 border-top">
                 <form id="reply-form" class="d-flex align-items-center gap-2" enctype="multipart/form-data">
                     <!-- แนบไฟล์ -->
-                    <label for="reply-file" class="btn btn-outline-secondary d-flex align-items-center justify-content-center">
+                    <label for="reply-file" class="btn btn-outline-secondary d-flex align-items-center justify-content-center" title="แนบไฟล์">
                         <i class="bi bi-paperclip"></i>
                     </label>
                     <input type="file" id="reply-file" accept="image/*" style="display: none;">
+
+                    <!-- ปุ่มเปิดเลือกสติกเกอร์ -->
+                    <button type="button" class="btn btn-outline-secondary d-flex align-items-center justify-content-center" id="openStickerModal" title="เลือกสติกเกอร์">
+                        <i class="bi bi-emoji-smile"></i>
+                    </button>
+
+                    <!-- ปุ่มเพิ่มข้อความล่วงหน้า (standard replies) -->
+                    <button type="button" class="btn btn-outline-secondary d-flex align-items-center justify-content-center" id="openStandardReplyModal" title="เพิ่มข้อความล่วงหน้า">
+                        <i class="fa-light fa-message-plus"></i>
+                    </button>
 
                     <!-- พิมพ์ข้อความ -->
                     <input type="text" class="form-control" id="reply-text" placeholder="พิมพ์ข้อความตอบกลับ...">
@@ -119,7 +130,6 @@
                     <input type="hidden" id="Botid">
                 </form>
             </div>
-
 
         </div>
     </div>
@@ -142,6 +152,28 @@
             </form>
         </div>
     </div>
+     <!-- Modal -->
+<div class="modal fade" id="stickerModal" tabindex="-1" aria-labelledby="stickerModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content" style="height: 80vh;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="stickerModalLabel">เลือกสติกเกอร์</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body" style="overflow-y: auto; max-height: calc(80vh - 60px);">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" id="stickerTab" role="tablist"></ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content pt-3" id="stickerTabContent" style="min-height: 50vh;"></div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 
     <div class="modal fade" id="addOATokenModal" tabindex="-1" aria-labelledby="addOATokenLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -168,7 +200,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
     <!-- JavaScript toggle logic -->
     <script>
-     
+             // JavaScript (ใช้ Bootstrap 5)
+        document.getElementById('openStickerModal').addEventListener('click', function () {
+          var myModal = new bootstrap.Modal(document.getElementById('stickerModal'), {});
+          myModal.show();
+        });
 
                                         // เพิ่ม toggle ย่อ/ขยาย
         document.addEventListener('click', function (e) {
@@ -195,6 +231,17 @@
     </script>
     <script>
             document.addEventListener("DOMContentLoaded", function() {
+                                fetch('/Home/GetChatHistories', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ displayNames: @Html.Raw(JsonConvert.SerializeObject(displayNameList)) })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Chats loaded", data);
+                    // แสดงผล หรือรอให้ SignalR push ข้อมูลมา
+                })
+                .catch(err => console.error(err));
         const isExpired = @isExpired.ToString().ToLower();
 
         if (isExpired) {
@@ -308,79 +355,119 @@
         .pop() || "";
 };
 
-connection.on("UpdateChatList", function (userId, displayName, pictureUrl, lastMessage, timestamp, botDisplayName, BotId) {
-    const chatKey = `${userId}-${botDisplayName.replace(/\s+/g, '')}`;
-    const isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(lastMessage);
-    const cleanMessage = getLastNonEmptyLine(lastMessage);
-    const messageContent = isImage
-        ? `<div class="text-muted text-truncate" style="max-width: 180px;" title="ส่งรูปภาพ">ส่งรูปภาพ</div>`
-        : `<div class="text-muted text-truncate" style="max-width: 180px;" title="${cleanMessage}">${cleanMessage}</div>`;
+        connection.on("UpdateChatList", function (userId, displayName, pictureUrl, lastMessage, timestamp, botDisplayName, BotId) {
+            const chatKey = `${userId}-${botDisplayName.replace(/\s+/g, '')}`;
+            const isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(lastMessage);
+            const cleanMessage = getLastNonEmptyLine(lastMessage);
+            const messageContent = isImage
+                ? `<div class="text-muted text-truncate" style="max-width: 180px;" title="ส่งรูปภาพ">ส่งรูปภาพ</div>`
+                : `<div class="text-muted text-truncate" style="max-width: 180px;" title="${cleanMessage}">${cleanMessage}</div>`;
 
-    // ตรวจสอบในกลุ่ม VIP
-    let vipLi = null;
-    const vipLists = document.querySelectorAll('ul[id^="vipGroup-"]');
-    for (const ul of vipLists) {
-        const li = ul.querySelector(`#chat-${chatKey}`);
-        if (li) {
-            vipLi = li;
-            break;
-        }
-    }
+            // ตรวจสอบในกลุ่ม VIP
+            let vipLi = null;
+            const vipLists = document.querySelectorAll('ul[id^="vipGroup-"]');
+            for (const ul of vipLists) {
+                const li = ul.querySelector(`#chat-${chatKey}`);
+                if (li) {
+                    vipLi = li;
+                    break;
+                }
+            }
 
-    const updateListItem = (li) => {
-        const messageContainer = li.querySelector('.fw-bold').parentElement;
+            const updateListItem = (li) => {
+                const messageContainer = li.querySelector('.fw-bold').parentElement;
 
-        // ลบ div.text-muted ทั้งหมด (ข้อความเก่า)
-        messageContainer.querySelectorAll('.text-muted').forEach(el => el.remove());
+                // ลบ div.text-muted ทั้งหมด (ข้อความเก่า)
+                messageContainer.querySelectorAll('.text-muted').forEach(el => el.remove());
 
-        messageContainer.insertAdjacentHTML('beforeend', messageContent);
+                messageContainer.insertAdjacentHTML('beforeend', messageContent);
 
-        const timeSmall = li.querySelector('small.text-muted:last-child');
-        if (timeSmall) {
-            timeSmall.textContent = timestamp;
-        }
-    };
+                const timeSmall = li.querySelector('small.text-muted:last-child');
+                if (timeSmall) {
+                    timeSmall.textContent = timestamp;
+                }
 
-    if (vipLi) {
-        updateListItem(vipLi);
-        return;
-    }
+                // อัปเดตตัวนับข้อความใหม่
+                let badge = li.querySelector('.unread-count-badge');
+                if (!badge) {
+                    // สร้าง badge ใหม่
+                    badge = document.createElement('span');
+                    badge.classList.add('unread-count-badge');
+                    // สไตล์ badge
+                    badge.style.cssText = `
+                        position: absolute;
+                        top: 8px;
+                        right: 8px;
+                        background-color: #28a745; /* สีเขียว */
+                        color: white;
+                        border-radius: 50%;
+                        padding: 2px 7px;
+                        font-size: 12px;
+                        font-weight: bold;
+                        user-select: none;
+                        min-width: 20px;
+                        text-align: center;
+                        line-height: 1;
+                    `;
+                    li.style.position = 'relative'; // เพื่อให้ badge อยู่ในตำแหน่งที่ถูกต้อง
+                    li.appendChild(badge);
+                    badge.textContent = "1";
+                } else {
+                    // เพิ่มค่าตัวนับขึ้นทีละ 1
+                    let count = parseInt(badge.textContent) || 0;
+                    badge.textContent = count + 1;
+                }
+            };
 
-    const container = document.getElementById("chatItems");
-    const existingLi = container.querySelector(`#chat-${chatKey}`);
-    if (existingLi) {
-        updateListItem(existingLi);
-        return;
-    }
+            if (vipLi) {
+                updateListItem(vipLi);
+                return;
+            }
 
-        const itemHtml = `
-            <li class="list-group-item d-flex align-items-start justify-content-between" id="chat-${chatKey}" style="cursor: pointer;">
-                <div class="d-flex">
-                    <img src="${pictureUrl}" class="rounded-circle me-2 flex-shrink-0" width="40" height="40" alt="${displayName}">
-                    <div>
-                        <div class="fw-bold">
-                            ${displayName}
-                            <span style="display:block">มาจาก ${botDisplayName}</span>
-                            <br><small style="display:none" class="text-muted">BotId: ${BotId}</small>
+            const container = document.getElementById("chatItems");
+            const existingLi = container.querySelector(`#chat-${chatKey}`);
+            if (existingLi) {
+                updateListItem(existingLi);
+                return;
+            }
+
+            const itemHtml = `
+                <li class="list-group-item d-flex align-items-start justify-content-between" id="chat-${chatKey}" style="cursor: pointer; position: relative;">
+                    <div class="d-flex">
+                        <img src="${pictureUrl}" class="rounded-circle me-2 flex-shrink-0" width="40" height="40" alt="${displayName}">
+                        <div>
+                            <div class="fw-bold">
+                                ${displayName}
+                                <span style="display:block">มาจาก ${botDisplayName}</span>
+                                <br><small style="display:none" class="text-muted">BotId: ${BotId}</small>
+                            </div>
+                            ${messageContent}
                         </div>
-                        ${messageContent}
                     </div>
-                </div>
-                <div class="text-end">
-                    <input type="checkbox" class="form-check-input make-vip-checkbox" style="display:none;"
-                           data-user-id="${userId}" data-bot-name="${botDisplayName}" data-bot-id="${BotId}">
-                    <small class="text-muted" style="white-space: nowrap;">${timestamp}</small>
-                </div>
-            </li>
-        `;
-    container.insertAdjacentHTML('beforeend', itemHtml);
+                    <div class="text-end">
+                        <input type="checkbox" class="form-check-input make-vip-checkbox" style="display:none;"
+                               data-user-id="${userId}" data-bot-name="${botDisplayName}" data-bot-id="${BotId}">
+                        <small class="text-muted" style="white-space: nowrap;">${timestamp}</small>
+                    </div>
+                </li>
+            `;
+            container.insertAdjacentHTML('beforeend', itemHtml);
 
-    const li = document.getElementById(`chat-${chatKey}`);
-    li.addEventListener('click', handleChatClick);
+            const li = document.getElementById(`chat-${chatKey}`);
 
-    attachVipCheckboxHandlers?.();
-});
-                connection.start().catch(function (err) {
+            // เพิ่ม event ล้าง badge ตอนคลิก
+            li.addEventListener('click', function() {
+                const badge = this.querySelector('.unread-count-badge');
+                if (badge) {
+                    badge.remove();
+                }
+                handleChatClick.apply(this, arguments); // เรียก handler เดิมด้วย
+            });
+
+            attachVipCheckboxHandlers?.();
+        });
+
+                        connection.start().catch(function (err) {
             return console.error(err.toString());
         });
         function attachVipCheckboxHandlers() {
@@ -685,10 +772,10 @@ document.getElementById('addToVipForm').addEventListener('submit', function (e) 
             }
         }
 
-         document.getElementById("reply-form").addEventListener("submit", function (e) {
+               document.getElementById("reply-form").addEventListener("submit", function (e) {
             e.preventDefault();
 
-            const message = document.getElementById("reply-text").value;
+            const message = document.getElementById("reply-text").value.trim();
             const userId = document.getElementById("Userid").value;
             const botId = document.getElementById("Botid").value;
             const fileInput = document.getElementById("reply-file");
@@ -696,6 +783,11 @@ document.getElementById('addToVipForm').addEventListener('submit', function (e) 
 
             if (!userId || !botId) {
                 alert("กรุณาเลือกแชทก่อนส่งข้อความ");
+                return;
+            }
+
+            if (!message && !file) {
+                alert("กรุณาพิมพ์ข้อความหรือเลือกไฟล์ก่อนส่ง");
                 return;
             }
 
@@ -750,6 +842,133 @@ document.getElementById('addToVipForm').addEventListener('submit', function (e) 
             });
         });
 
+                const stickerPackages = [
+          {
+            packageId: "11537", packageName: "Brown & Friends",
+            stickers: ["52002730","52002731","52002732","52002733","52002734","52002735","52002736",
+                       "52002737","52002738","52002739","52002740","52002741","52002742","52002743",
+                       "52002744","52002745","52002746","52002747","52002748","52002749","52002750",
+                       "52002751","52002752","52002753","52002754","52002755","52002756","52002757",
+                       "52002758","52002759","52002760","52002761","52002762","52002763","52002764"]
+          },
+          { packageId: "446", packageName: "LINE Characters", stickers: ["1988", "1989", "1990", "1991", "1992", "1993"] },
+          { packageId: "789", packageName: "Cony & Brown", stickers: ["10818", "10819", "10820", "10821", "10822", "10823"] },
+          { packageId: "6136", packageName: "Sally", stickers: ["10551375", "10551376", "10551377", "10551378", "10551379", "10551380"] },
+          { packageId: "6325", packageName: "Usagyuuun", stickers: ["10979914", "10979915", "10979916", "10979917", "10979918", "10979919", "10979920", "10979921", "10979922", "10979923", "10979924", "10979925", "10979926", "10979927", "10979928", "10979929"] },
+          { packageId: "8515", packageName: "Moon", stickers: ["16581250", "16581251", "16581252", "16581253", "16581254", "16581255"] },
+          { packageId: "607", packageName: "James", stickers: ["120718", "120719", "120720", "120721", "120722", "120723"] },
+          { packageId: "8522", packageName: "Boss", stickers: ["16581270", "16581271", "16581272", "16581273", "16581274", "16581275"] }
+        ];
+
+        function loadStickers() {
+          const tabList = document.getElementById('stickerTab');
+          const tabContent = document.getElementById('stickerTabContent');
+          tabList.innerHTML = '';
+          tabContent.innerHTML = '';
+
+          stickerPackages.forEach((pkg, index) => {
+            // สร้าง Tab
+            const tab = document.createElement('li');
+            tab.className = 'nav-item';
+            tab.role = 'presentation';
+            tab.innerHTML = `
+              <button class="nav-link ${index === 0 ? 'active' : ''}" id="tab-${pkg.packageId}"
+                      data-bs-toggle="tab" data-bs-target="#content-${pkg.packageId}"
+                      type="button" role="tab" aria-controls="content-${pkg.packageId}"
+                      aria-selected="${index === 0}">
+                ${pkg.packageName}
+              </button>
+            `;
+            tabList.appendChild(tab);
+
+            // สร้าง Tab content
+            const content = document.createElement('div');
+            content.className = `tab-pane fade ${index === 0 ? 'show active' : ''}`;
+            content.id = `content-${pkg.packageId}`;
+            content.role = 'tabpanel';
+            content.setAttribute('aria-labelledby', `tab-${pkg.packageId}`);
+
+            const grid = document.createElement('div');
+            grid.id = `stickerGrid-${pkg.packageId}`;
+            grid.className = 'd-flex flex-wrap gap-3 justify-content-center';
+
+            pkg.stickers.forEach(stickerId => {
+              const img = document.createElement('img');
+              img.src = `https://stickershop.line-scdn.net/stickershop/v1/sticker/${stickerId}/ANDROID/sticker.png`;
+              img.alt = 'Sticker';
+              img.style.width = '100px';
+              img.style.cursor = 'pointer';
+              img.dataset.packageId = pkg.packageId;
+              img.dataset.stickerId = stickerId;
+
+              img.addEventListener('click', onStickerClick);
+
+              grid.appendChild(img);
+            });
+
+            content.appendChild(grid);
+            tabContent.appendChild(content);
+          });
+        }
+
+        function onStickerClick() {
+          const packageId = this.dataset.packageId;
+          const stickerId = this.dataset.stickerId;
+          const userId = document.getElementById('Userid')?.value;
+          const botId = document.getElementById('Botid')?.value;
+
+          if (!userId || !botId) {
+            alert("กรุณาเลือกแชทก่อนส่งสติกเกอร์");
+            return;
+          }
+
+          const formData = new FormData();
+          formData.append("userId", userId);
+          formData.append("botId", botId);
+          formData.append("stickerPackageId", packageId);
+          formData.append("stickerId", stickerId);
+
+          fetch("/send-reply", {
+            method: "POST",
+            body: formData
+          }).then(res => {
+            if (res.ok) {
+              // alert('ส่งสติกเกอร์สำเร็จ');
+              const modal = bootstrap.Modal.getInstance(document.getElementById('stickerModal'));
+              modal.hide();
+              const stickerImgUrl = `https://stickershop.line-scdn.net/stickershop/v1/sticker/${stickerId}/ANDROID/sticker.png`;
+              const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+              const item = `
+                <div class="d-flex justify-content-end mb-3">
+                  <div>
+                    <div class="fw-bold mb-1 text-end">คุณ</div>
+                    <div class="bg-success rounded p-2 px-3 shadow-sm" style="max-width: 120px;">
+                      <img src="${stickerImgUrl}" alt="Sticker" class="img-fluid" />
+                      <div class="text-end"><small class="text-white-50">${timestamp}</small></div>
+                    </div>
+                  </div>
+                </div>`;
+
+              const fullKey = `${userId}-${botId.replace(/\s+/g, '')}`;
+              if (!chatHistories[fullKey]) chatHistories[fullKey] = [];
+              chatHistories[fullKey].push(item);
+
+              if (currentUserId === userId) {
+                document.getElementById("chat-messages").innerHTML += item;
+              }
+
+            } else {
+              alert('ส่งสติกเกอร์ล้มเหลว');
+            }
+          }).catch(err => {
+            console.error('ส่งผิดพลาด:', err);
+            alert('เกิดข้อผิดพลาด');
+          });
+        }
+
+        // เรียกเมื่อโหลดหน้า
+        document.addEventListener("DOMContentLoaded", loadStickers);
     </script>
     <script>
         document.getElementById("chatSearch").addEventListener("input", function () {

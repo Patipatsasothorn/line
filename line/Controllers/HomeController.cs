@@ -9,6 +9,7 @@ using line.Hubs;
 using Microsoft.AspNetCore.SignalR;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using Microsoft.Data.SqlClient;
+using Dapper;
 
 namespace line.Controllers
 {
@@ -135,6 +136,7 @@ namespace line.Controllers
                     }
 
                     ChatStorage.Add(userId, message);
+                    await SaveChatToDatabase(userId, profile.DisplayName, message, profile.PictureUrl, timestamp, oaName, BotId);
 
                     await _hubContext.Clients.All.SendAsync(
                         "ReceiveMessage",
@@ -164,8 +166,134 @@ namespace line.Controllers
 
             return Ok();
         }
-       
-       
+        [HttpPost]
+        public async Task<IActionResult> GetChatHistories([FromBody] ChatHistoryRequest request)
+        {
+            if (request == null || request.DisplayNames == null || request.DisplayNames.Length == 0)
+            {
+                return BadRequest("No display names provided.");
+            }
+
+            // ตัดช่องว่างหน้าหลัง (Trim) ทุกตัวใน array
+            var trimmedDisplayNames = request.DisplayNames
+                .Where(name => !string.IsNullOrWhiteSpace(name))  // กรองชื่อว่าง หรือมีแต่ช่องว่างทิ้ง
+                .Select(name => name.Trim())
+                .ToArray();
+
+            if (trimmedDisplayNames.Length == 0)
+            {
+                return BadRequest("Display names are empty after trimming.");
+            }
+
+            string connectionString = _configuration.GetConnectionString("DefaultConnection");
+            using var connection = new SqlConnection(connectionString);
+
+            var query = @"
+        SELECT TOP 100 Id, UserId, OAName, BotId, Message, Timestamp, DisplayName, PictureUrl
+        FROM dbo.ChatHistory
+        WHERE OAName IN @DisplayNames
+        ORDER BY Timestamp DESC";
+
+            var chats = await connection.QueryAsync<ChatHistory>(
+                query,
+                new { DisplayNames = trimmedDisplayNames }
+            );
+
+            foreach (var chat in chats)
+            {
+                await _hubContext.Clients.All.SendAsync(
+                    "ReceiveMessage",
+                    chat.DisplayName,
+                    chat.Message,
+                    chat.PictureUrl,
+                    chat.Timestamp.ToString("HH:mm"),
+                    chat.UserId,
+                    chat.OAName,
+                    chat.BotId
+                );
+
+                await _hubContext.Clients.All.SendAsync(
+                    "UpdateChatList",
+                    chat.UserId,
+                    chat.DisplayName,
+                    chat.PictureUrl,
+                    chat.Message,
+                    chat.Timestamp.ToString("HH:mm"),
+                    chat.OAName,
+                    chat.BotId
+                );
+            }
+
+            return Json(new { success = true, count = chats.AsList().Count });
+        }
+        private async Task SaveChatToDatabase(string userId, string displayName, string message, string pictureUrl, string timestamp, string oaName, string botId)
+        {
+            string connectionString = _configuration.GetConnectionString("DefaultConnection");
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+
+                string sql = @"
+            INSERT INTO KEW_Live.dbo.ChatHistory 
+            (UserId, DisplayName, Message, PictureUrl, Timestamp, OAName, BotId)
+            VALUES (@UserId, @DisplayName, @Message, @PictureUrl, @Timestamp, @OAName, @BotId)";
+
+                using (var command = new SqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@UserId", userId);
+                    command.Parameters.AddWithValue("@DisplayName", displayName);
+                    command.Parameters.AddWithValue("@Message", message);
+                    command.Parameters.AddWithValue("@PictureUrl", pictureUrl ?? "");
+                    command.Parameters.AddWithValue("@Timestamp", DateTime.ParseExact(timestamp, "HH:mm", null)); // หรือ DateTime.Now
+                    command.Parameters.AddWithValue("@OAName", oaName ?? "");
+                    command.Parameters.AddWithValue("@BotId", botId);
+
+                    await command.ExecuteNonQueryAsync();
+                }
+            }
+        }
+        [HttpGet]
+
+        public async Task<IActionResult> LoadChatHistory(string[] displayNames)
+        {
+            var chatHistory = new List<object>();
+
+            using (var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await connection.OpenAsync();
+
+                foreach (var name in displayNames)
+                {
+                    string sql = @"SELECT * FROM KEW_Live.dbo.ChatHistory WHERE DisplayName = @DisplayName ORDER BY Timestamp ASC";
+
+                    using (var command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@DisplayName", name);
+
+                        using (var reader = await command.ExecuteReaderAsync())
+                        {
+                            while (await reader.ReadAsync())
+                            {
+                                chatHistory.Add(new
+                                {
+                                    UserId = reader["UserId"].ToString(),
+                                    DisplayName = reader["DisplayName"].ToString(),
+                                    Message = reader["Message"].ToString(),
+                                    PictureUrl = reader["PictureUrl"].ToString(),
+                                    Timestamp = ((DateTime)reader["Timestamp"]).ToString("HH:mm"),
+                                    OAName = reader["OAName"].ToString(),
+                                    BotId = reader["BotId"].ToString()
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+
+            return Json(chatHistory);
+        }
+
         public async Task<byte[]> GetContentFromLineMessage(string messageId, string BotId)
         {
             string accessToken = await GetAccessTokenFromDatabase(BotId);
@@ -268,6 +396,11 @@ namespace line.Controllers
             {
                 await PushMessage(dto.UserId, dto.Message, dto.BotId);
             }
+            // ส่งสติกเกอร์ (ถ้ามี)
+            else if (dto.StickerPackageId.HasValue && dto.StickerId.HasValue)
+            {
+                await PushSticker(dto.UserId, dto.BotId, dto.StickerPackageId.Value, dto.StickerId.Value);
+            }
 
             // ส่งรูปภาพถ้ามี
             if (imageFile != null && imageFile.Length > 0)
@@ -293,6 +426,32 @@ namespace line.Controllers
             return Ok();
         }
 
+        private async Task PushSticker(string userId, string botId, int packageId, int stickerId)
+        {
+            var accessToken = await GetAccessTokenFromDatabase(botId);
+            if (string.IsNullOrEmpty(accessToken))
+                throw new InvalidOperationException("Access token not found for botId.");
+
+            var client = _httpClientFactory.CreateClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+            var payload = new
+            {
+                to = userId,
+                messages = new[]
+                {
+            new
+            {
+                type = "sticker",
+                packageId = packageId.ToString(),
+                stickerId = stickerId.ToString()
+            }
+        }
+            };
+
+            var content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
+            await client.PostAsync("https://api.line.me/v2/bot/message/push", content);
+        }
         private async Task PushMessage(string userId, string message, string botId)
         {
             var accessToken = await GetAccessTokenFromDatabase(botId);
