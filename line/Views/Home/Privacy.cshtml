@@ -193,6 +193,7 @@
             </form>
         </div>
     </div>
+    <button id="loadChatsBtn" class="btn btn-primary">โหลดแชท</button>
 
 </div>
 @section Scripts {
@@ -242,8 +243,24 @@
                     // แสดงผล หรือรอให้ SignalR push ข้อมูลมา
                 })
                 .catch(err => console.error(err));
-        const isExpired = @isExpired.ToString().ToLower();
 
+        const isExpired = @isExpired.ToString().ToLower();
+                    document.getElementById("loadChatsBtn").addEventListener("click", function() {
+                // สมมติ displayNameList ถูกเซ็ตมาจากฝั่ง Razor แล้ว
+                const displayNameList = @Html.Raw(JsonConvert.SerializeObject(displayNameList));
+
+                fetch('/Home/GetChatHistories', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ displayNames: displayNameList })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Chats loaded", data);
+                    // ตรงนี้ถ้าจะทำอะไรต่อ เช่น แสดงผล หรือรอ SignalR push ข้อมูล
+                })
+                .catch(err => console.error(err));
+            });
         if (isExpired) {
             const replyInput = document.getElementById("reply-text");
             const replySubmitBtn = document.querySelector("#reply-form button[type='submit']");
@@ -267,8 +284,8 @@
             .withUrl("/chatHub")
             .build();
 
-        connection.on("ReceiveMessage", function (userName, message, pictureUrl, timestamp, userId, oaName,BotId) {
-            // สร้าง key ที่ไม่ซ้ำกันสำหรับแต่ละ user+bot
+        connection.on("ReceiveMessage", function (userName, message, pictureUrl, timestamp, userId, oaName, BotId, isReply) {
+            // สร้าง key ไม่ซ้ำกัน
             const fullKey = `${userId}-${BotId.replace(/\s+/g, '')}`;
 
             if (!chatHistories[fullKey]) {
@@ -277,33 +294,47 @@
 
             // ตรวจสอบว่า message เป็น URL รูปภาพหรือไม่
             let isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(message);
-            let messageContent = isImage
-                ? `<img src="${message}" alt="image" style="max-width: 500px; max-height: 350px; border-radius: 4px;" class="clickable-image" data-fullsize="${message}" />`
-                : `<div class="bg-light rounded p-2 px-3 shadow-sm" style="max-width: 300px;">${message}</div>`;
 
-            const item = `
-                <div class="d-flex mb-3">
-                    <img src="${pictureUrl}" class="rounded-circle me-2 flex-shrink-0" width="40" height="40" alt="${userName}">
-                    <div>
-                        <div class="fw-bold mb-1">${userName}</div>
-                        ${messageContent}
-                        <small class="text-muted text-end" style="white-space: nowrap;">${timestamp}</small>
+            // กำหนด style ข้อความตาม isReply
+            let messageContent;
+             if (isReply) {
+                    // ข้อความมุมขวา, พื้นหลังสีเขียวอ่อน
+                    messageContent = isImage
+                        ? `<img src="${message}" alt="image" style="max-width: 500px; max-height: 350px; border-radius: 4px;" class="clickable-image" data-fullsize="${message}" />`
+                        : `<div class="bg-success text-white rounded p-2 px-3 shadow-sm" style="max-width: 300px; margin-left: auto;">${message}</div>`;
+                } else {
+                    // ข้อความปกติมุมซ้าย, พื้นหลังสีเทาอ่อน
+                    messageContent = isImage
+                        ? `<img src="${message}" alt="image" style="max-width: 500px; max-height: 350px; border-radius: 4px;" class="clickable-image" data-fullsize="${message}" />`
+                        : `<div class="bg-light rounded p-2 px-3 shadow-sm" style="max-width: 300px;">${message}</div>`;
+                }
+
+                const profileImage = !isReply
+                    ? `<img src="${pictureUrl}" class="rounded-circle me-2 flex-shrink-0" width="40" height="40" alt="${userName}">`
+                    : "";
+
+                const item = `
+                    <div class="d-flex mb-3 ${isReply ? 'justify-content-end' : ''}">
+                        ${profileImage}
+                        <div>
+                            <div class="fw-bold mb-1">${userName}</div>
+                            ${messageContent}
+                            <small class="text-muted text-end" style="white-space: nowrap;">${timestamp}</small>
+                        </div>
                     </div>
-                </div>
-            `;
+                `;
+
 
             chatHistories[fullKey].push(item);
 
-            // เช็คว่า user และ bot ตรงกับที่เลือกไว้
             const selectedKey = document.getElementById("Userid").value + "-" + BotId.replace(/\s+/g, '');
-            const chatHeaderText = document.querySelector("h5").textContent.trim(); // ข้อความใน <h5> ที่แสดงชื่อ bot
-                const normalizedOaName = BotId.replace(/\s+/g, '');
-                const normalizedHeader = chatHeaderText.replace(/\s+/g, '');
+            const chatHeaderText = document.querySelector("h5").textContent.trim();
+            const normalizedOaName = BotId.replace(/\s+/g, '');
+            const normalizedHeader = chatHeaderText.replace(/\s+/g, '');
 
-                if (currentUserId === userId && normalizedHeader === normalizedOaName) {
-                    document.getElementById("chat-messages").innerHTML += item;
-                }
-
+            if (currentUserId === userId && normalizedHeader === normalizedOaName) {
+                document.getElementById("chat-messages").innerHTML += item;
+            }
 
             // จัดการการคลิกที่รูปภาพ
             let clickableImages = document.querySelectorAll('.clickable-image');
@@ -317,7 +348,7 @@
 
 
 
-        // ฟังก์ชันเปิดรูปใน modal
+                // ฟังก์ชันเปิดรูปใน modal
         function openImageInModal(imageUrl) {
             const modalHtml = `
                 <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
@@ -356,6 +387,15 @@
 };
 
         connection.on("UpdateChatList", function (userId, displayName, pictureUrl, lastMessage, timestamp, botDisplayName, BotId) {
+            const displayNameList = @Html.Raw(Json.Serialize(displayNameList));
+                        // ✨ ลบช่องว่างออกจาก botDisplayName เพื่อใช้เปรียบเทียบ
+            const cleanedBotName = botDisplayName.replace(/\s+/g, '');
+
+            // ✨ ตรวจสอบว่าชื่อ bot นี้อยู่ใน displayNameList หรือไม่
+            const isMatched = displayNameList.some(name => name.replace(/\s+/g, '') === cleanedBotName);
+
+            // ❌ ถ้าไม่ตรงกับชื่อที่กำหนดไว้ ก็ไม่ต้องทำอะไร
+            if (!isMatched) return;
             const chatKey = `${userId}-${botDisplayName.replace(/\s+/g, '')}`;
             const isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(lastMessage);
             const cleanMessage = getLastNonEmptyLine(lastMessage);
@@ -461,7 +501,8 @@
                 if (badge) {
                     badge.remove();
                 }
-                handleChatClick.apply(this, arguments); // เรียก handler เดิมด้วย
+
+                // handleChatClick.apply(this, arguments); // เรียก handler เดิมด้วย
             });
 
             attachVipCheckboxHandlers?.();
@@ -736,43 +777,115 @@ document.getElementById('addToVipForm').addEventListener('submit', function (e) 
         function handleChatClick(e) {
             let target = e.target;
 
-            // วนขึ้นไปหา <li>
+            // หา parent <li>
             while (target && target.tagName !== "LI") {
                 target = target.parentNode;
             }
 
             if (target) {
                 const checkbox = target.querySelector("input.make-vip-checkbox");
+                if (!checkbox) return;
+
                 const userId = checkbox.getAttribute("data-user-id");
                 const botName = checkbox.getAttribute("data-bot-name");
-                const botId = checkbox.getAttribute("data-bot-id"); // 👈 ใช้ botId ตรงนี้
+                const botId = checkbox.getAttribute("data-bot-id");
 
-                console.log('userId:', userId);   // เช็คค่าที่ได้
-                console.log('botName:', botName); // เช็คค่าที่ได้
-                console.log('botId:', botId);     // เช็คค่าที่ได้
+                console.log('userId:', userId);
+                console.log('botName:', botName);
+                console.log('botId:', botId);
 
                 const fullKey = `${userId}-${botId.replace(/\s+/g, '')}`;
 
                 currentUserId = userId;
                 document.getElementById("Userid").value = userId;
-                document.getElementById("Botid").value = botId; // 👈 ใส่ค่าเข้า input
+                document.getElementById("Botid").value = botId;
 
-                // อัปเดตชื่อหัวข้อ
-                document.querySelector("h5").innerHTML = `${botName}`;
+                document.querySelector("h5").textContent = botName;
 
-                document.getElementById("chat-messages").innerHTML = "";
+                document.getElementById("chat-messages").innerHTML = "";  // ล้างข้อความเก่า
 
-                if (chatHistories[fullKey]) {
-                    chatHistories[fullKey].forEach(msg => {
-                        document.getElementById("chat-messages").innerHTML += msg;
-                    });
-                } else {
-                    console.log('No history found for:', fullKey); // ถ้าไม่มีประวัติ
-                }
+                // เรียก API ที่ /Home/ReceiveMessageHistories
+                fetch('/Home/ReceiveMessageHistories', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        data: [userId],  // ส่ง array ตามรูปแบบ model
+                        userId: userId,
+                        botId: botId
+                    })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(result => {
+                    if (result.success) {
+                        // กรณีมี chatHistories เก็บไว้ใน JS แล้ว เอามาแสดง
+                        if (chatHistories[fullKey]) {
+                            chatHistories[fullKey].forEach(msg => {
+                                document.getElementById("chat-messages").innerHTML += msg;
+                            });
+                        } else {
+                            console.log('No chat history cached for:', fullKey);
+                            // อาจแสดงข้อความว่างหรือโหลดใหม่จาก SignalR
+                        }
+                    } else {
+                        console.error("Failed to load chat history");
+                    }
+                })
+                .catch(error => {
+                    console.error('Fetch error:', error);
+                });
             }
         }
 
-               document.getElementById("reply-form").addEventListener("submit", function (e) {
+               function loadChatHistory(userId, botId) {
+            fetch(`/chat-history?userId=${userId}&botId=${botId}`)
+                .then(res => res.json())
+                .then(data => {
+                    const chatBox = document.getElementById("chat-messages");
+                    chatBox.innerHTML = "";
+
+                    const fullKey = `${userId}-${botId.replace(/\s+/g, '')}`;
+                    chatHistories[fullKey] = [];
+
+                    data.forEach(chat => {
+                        const isAdmin = chat.DisplayName === "Admin"; // หรือเช็คจากชื่อคุณ
+                        const timestamp = chat.Timestamp;
+
+                        const messageHtml = `
+                            <div class="d-flex ${isAdmin ? 'justify-content-end' : 'justify-content-start'} mb-3">
+                                <div>
+                                    <div class="fw-bold mb-1 ${isAdmin ? 'text-end' : 'text-start'}">
+                                        ${isAdmin ? 'คุณ' : chat.DisplayName}
+                                    </div>
+                                    <div class="${isAdmin ? 'bg-success text-white' : 'bg-light text-dark'} rounded p-2 px-3 shadow-sm" style="max-width: 300px;">
+                                        ${chat.Message}
+                                        <div class="${isAdmin ? 'text-end' : 'text-start'}">
+                                            <small class="${isAdmin ? 'text-white-50' : 'text-muted'}">${timestamp}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+
+                        chatBox.innerHTML += messageHtml;
+                        chatHistories[fullKey].push(messageHtml);
+                    });
+
+                    currentUserId = userId;
+                })
+                .catch(err => {
+                    console.error("โหลดประวัติแชทล้มเหลว:", err);
+                    alert("ไม่สามารถโหลดประวัติแชทได้");
+                });
+        }
+
+             document.getElementById("reply-form").addEventListener("submit", function (e) {
             e.preventDefault();
 
             const message = document.getElementById("reply-text").value.trim();

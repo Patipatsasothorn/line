@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\lineproject\\line\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -11,20 +23,24 @@
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\models\\chathistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\chathistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\models\\receivechathistoryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\receivechathistoryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\models\\chathistoryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\chathistoryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\models\\chathistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\chathistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\models\\chatstorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,20 +51,12 @@
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\chatmessagesave.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\models\\replyformdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\replyformdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -65,10 +73,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\models\\userkeymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\userkeymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|c:\\lineproject\\line\\line\\views\\home\\alllineoa.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -173,7 +177,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -185,132 +189,72 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ChatHistory.cs",
-              "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\ChatHistory.cs",
-              "RelativeDocumentMoniker": "line\\Models\\ChatHistory.cs",
-              "ToolTip": "C:\\lineproject\\line\\line\\Models\\ChatHistory.cs",
-              "RelativeToolTip": "line\\Models\\ChatHistory.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T09:33:12.608Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "ChatHistoryRequest.cs",
-              "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\ChatHistoryRequest.cs",
-              "RelativeDocumentMoniker": "line\\Models\\ChatHistoryRequest.cs",
-              "ToolTip": "C:\\lineproject\\line\\line\\Models\\ChatHistoryRequest.cs",
-              "RelativeToolTip": "line\\Models\\ChatHistoryRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-21T09:32:53.441Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\lineproject\\line\\line\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "line\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\lineproject\\line\\line\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "line\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAALEAAAAAAAAAAAAqwMkAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T02:52:21.771Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\lineproject\\line\\line\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "line\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\lineproject\\line\\line\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "line\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAwwFoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T12:00:15.389Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\lineproject\\line\\line\\Views\\Admin\\Index.cshtml",
-              "RelativeDocumentMoniker": "line\\Views\\Admin\\Index.cshtml",
-              "ToolTip": "C:\\lineproject\\line\\line\\Views\\Admin\\Index.cshtml",
-              "RelativeToolTip": "line\\Views\\Admin\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAK8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-17T17:23:29.885Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\lineproject\\line\\line\\appsettings.json",
-              "RelativeDocumentMoniker": "line\\appsettings.json",
-              "ToolTip": "C:\\lineproject\\line\\line\\appsettings.json",
-              "RelativeToolTip": "line\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-02T12:01:38.995Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ChatStorage.cs",
-              "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\ChatStorage.cs",
-              "RelativeDocumentMoniker": "line\\Models\\ChatStorage.cs",
-              "ToolTip": "C:\\lineproject\\line\\line\\Models\\ChatStorage.cs",
-              "RelativeToolTip": "line\\Models\\ChatStorage.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAIwBAAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T02:55:03.147Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "Privacy.cshtml",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Views\\Home\\Privacy.cshtml",
               "RelativeDocumentMoniker": "line\\Views\\Home\\Privacy.cshtml",
               "ToolTip": "C:\\lineproject\\line\\line\\Views\\Home\\Privacy.cshtml",
               "RelativeToolTip": "line\\Views\\Home\\Privacy.cshtml",
-              "ViewState": "AgIAAAYBAAAAAAAAAAAuwCgBAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAJMBAAAAAAAAAAAiwKkBAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-01T14:03:37.539Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ReplyFormDto.cs",
-              "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\ReplyFormDto.cs",
-              "RelativeDocumentMoniker": "line\\Models\\ReplyFormDto.cs",
-              "ToolTip": "C:\\lineproject\\line\\line\\Models\\ReplyFormDto.cs",
-              "RelativeToolTip": "line\\Models\\ReplyFormDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T07:03:04.591Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Program.cs",
               "RelativeDocumentMoniker": "line\\Program.cs",
               "ToolTip": "C:\\lineproject\\line\\line\\Program.cs",
               "RelativeToolTip": "line\\Program.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAADAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-23T02:57:42.857Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 11,
+              "Title": "ChatMessageSave.cs",
+              "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\ChatMessageSave.cs",
+              "RelativeDocumentMoniker": "line\\Models\\ChatMessageSave.cs",
+              "ToolTip": "C:\\lineproject\\line\\line\\Models\\ChatMessageSave.cs",
+              "RelativeToolTip": "line\\Models\\ChatMessageSave.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-17T12:32:25.047Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ChatHistoryRequest.cs",
+              "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\ChatHistoryRequest.cs",
+              "RelativeDocumentMoniker": "line\\Models\\ChatHistoryRequest.cs",
+              "ToolTip": "C:\\lineproject\\line\\line\\Models\\ChatHistoryRequest.cs",
+              "RelativeToolTip": "line\\Models\\ChatHistoryRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T09:32:53.441Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ChatHistory.cs",
+              "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\ChatHistory.cs",
+              "RelativeDocumentMoniker": "line\\Models\\ChatHistory.cs",
+              "ToolTip": "C:\\lineproject\\line\\line\\Models\\ChatHistory.cs",
+              "RelativeToolTip": "line\\Models\\ChatHistory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T09:33:12.608Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "line\\Views\\Shared\\_Layout.cshtml",
@@ -323,7 +267,110 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\lineproject\\line\\line\\appsettings.json",
+              "RelativeDocumentMoniker": "line\\appsettings.json",
+              "ToolTip": "C:\\lineproject\\line\\line\\appsettings.json",
+              "RelativeToolTip": "line\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-02T12:01:38.995Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\lineproject\\line\\line\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "line\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\lineproject\\line\\line\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "line\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAJAAAAAAAAAAAAASwJ8AAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-17T12:00:15.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\lineproject\\line\\line\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "line\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\lineproject\\line\\line\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "line\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAJgAAAAAAAAAAADgv6sAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T02:52:21.771Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ReceiveChatHistoryRequest.cs",
+              "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\ReceiveChatHistoryRequest.cs",
+              "RelativeDocumentMoniker": "line\\Models\\ReceiveChatHistoryRequest.cs",
+              "ToolTip": "C:\\lineproject\\line\\line\\Models\\ReceiveChatHistoryRequest.cs",
+              "RelativeToolTip": "line\\Models\\ReceiveChatHistoryRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T14:05:44.153Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\lineproject\\line\\line\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "line\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\lineproject\\line\\line\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "line\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-23T02:47:55.574Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ChatStorage.cs",
+              "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\ChatStorage.cs",
+              "RelativeDocumentMoniker": "line\\Models\\ChatStorage.cs",
+              "ToolTip": "C:\\lineproject\\line\\line\\Models\\ChatStorage.cs",
+              "RelativeToolTip": "line\\Models\\ChatStorage.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwBAAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T02:55:03.147Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 12,
+              "Title": "ReplyFormDto.cs",
+              "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\ReplyFormDto.cs",
+              "RelativeDocumentMoniker": "line\\Models\\ReplyFormDto.cs",
+              "ToolTip": "C:\\lineproject\\line\\line\\Models\\ReplyFormDto.cs",
+              "RelativeToolTip": "line\\Models\\ReplyFormDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T07:03:04.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\lineproject\\line\\line\\Views\\Admin\\Index.cshtml",
+              "RelativeDocumentMoniker": "line\\Views\\Admin\\Index.cshtml",
+              "ToolTip": "C:\\lineproject\\line\\line\\Views\\Admin\\Index.cshtml",
+              "RelativeToolTip": "line\\Views\\Admin\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAK8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-17T17:23:29.885Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "Dockerfile",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Dockerfile",
               "RelativeDocumentMoniker": "line\\Dockerfile",
@@ -335,19 +382,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ChatMessageSave.cs",
-              "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\ChatMessageSave.cs",
-              "RelativeDocumentMoniker": "line\\Models\\ChatMessageSave.cs",
-              "ToolTip": "C:\\lineproject\\line\\line\\Models\\ChatMessageSave.cs",
-              "RelativeToolTip": "line\\Models\\ChatMessageSave.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T12:32:25.047Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "AdminController.cs",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "line\\Controllers\\AdminController.cs",
@@ -359,7 +394,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "UserKeyModel.cs",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\UserKeyModel.cs",
               "RelativeDocumentMoniker": "line\\Models\\UserKeyModel.cs",
@@ -371,19 +406,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\lineproject\\line\\line\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "line\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\lineproject\\line\\line\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "line\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-23T02:47:55.574Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "alllineoa.cshtml",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Views\\Home\\alllineoa.cshtml",
               "RelativeDocumentMoniker": "line\\Views\\Home\\alllineoa.cshtml",
@@ -395,7 +418,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Views\\AccountSetting\\Index.cshtml",
               "RelativeDocumentMoniker": "line\\Views\\AccountSetting\\Index.cshtml",
@@ -407,7 +430,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "AccountSettingController.cs",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Controllers\\AccountSettingController.cs",
               "RelativeDocumentMoniker": "line\\Controllers\\AccountSettingController.cs",
@@ -419,7 +442,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "LineLoginController.cs",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Controllers\\LineLoginController.cs",
               "RelativeDocumentMoniker": "line\\Controllers\\LineLoginController.cs",
@@ -431,7 +454,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "Login.cshtml",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Views\\Account\\Login.cshtml",
               "RelativeDocumentMoniker": "line\\Views\\Account\\Login.cshtml",
@@ -443,7 +466,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "RegisterAdmin.cshtml",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Views\\Account\\RegisterAdmin.cshtml",
               "RelativeDocumentMoniker": "line\\Views\\Account\\RegisterAdmin.cshtml",
@@ -455,7 +478,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\User.cs",
               "RelativeDocumentMoniker": "line\\Models\\User.cs",
@@ -467,7 +490,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\AppDbContext.cs",
               "RelativeDocumentMoniker": "line\\Models\\AppDbContext.cs",
@@ -479,7 +502,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "ErrorViewModel.cs",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\ErrorViewModel.cs",
               "RelativeDocumentMoniker": "line\\Models\\ErrorViewModel.cs",
@@ -491,7 +514,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "Register.cshtml",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Views\\Account\\Register.cshtml",
               "RelativeDocumentMoniker": "line\\Views\\Account\\Register.cshtml",
@@ -503,7 +526,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "Chat.cs",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\Chat.cs",
               "RelativeDocumentMoniker": "line\\Models\\Chat.cs",
@@ -515,7 +538,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "LineOAController.cs",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Controllers\\LineOAController.cs",
               "RelativeDocumentMoniker": "line\\Controllers\\LineOAController.cs",
@@ -527,7 +550,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 36,
               "Title": "StickerRequest.cs",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\StickerRequest.cs",
               "RelativeDocumentMoniker": "line\\Models\\StickerRequest.cs",
@@ -539,7 +562,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "LogoutPage.cshtml",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Views\\Account\\LogoutPage.cshtml",
               "RelativeDocumentMoniker": "line\\Views\\Account\\LogoutPage.cshtml",
@@ -551,7 +574,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "oatablemodel.cs",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\oatablemodel.cs",
               "RelativeDocumentMoniker": "line\\Models\\oatablemodel.cs",
@@ -563,7 +586,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "OAAccount.cs",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\OAAccount.cs",
               "RelativeDocumentMoniker": "line\\Models\\OAAccount.cs",
@@ -575,7 +598,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "OAsData.cs",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\OAsData.cs",
               "RelativeDocumentMoniker": "line\\Models\\OAsData.cs",
@@ -587,7 +610,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "oatablecontext.cs",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\oatablecontext.cs",
               "RelativeDocumentMoniker": "line\\Models\\oatablecontext.cs",
@@ -599,7 +622,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "ChatHub.cs",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Hubs\\ChatHub.cs",
               "RelativeDocumentMoniker": "line\\Hubs\\ChatHub.cs",
@@ -611,7 +634,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "Readme.txt",
               "DocumentMoniker": "C:\\Users\\UserPRO\\.nuget\\packages\\linebotsdk\\2.14.40\\Readme.txt",
               "RelativeDocumentMoniker": "..\\..\\Users\\UserPRO\\.nuget\\packages\\linebotsdk\\2.14.40\\Readme.txt",
@@ -623,7 +646,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 37,
               "Title": "site.css",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "line\\wwwroot\\css\\site.css",
@@ -635,7 +658,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 39,
               "Title": "LineOATokenDto.cs",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\LineOATokenDto.cs",
               "RelativeDocumentMoniker": "line\\Models\\LineOATokenDto.cs",
@@ -647,7 +670,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "line.csproj",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\line.csproj",
               "RelativeDocumentMoniker": "line\\line.csproj",
@@ -659,7 +682,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 38,
               "Title": "line",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\line.csproj",
               "RelativeDocumentMoniker": "line\\line.csproj",
@@ -670,7 +693,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 40,
               "Title": "LineUserProfile.cs",
               "DocumentMoniker": "C:\\lineproject\\line\\line\\Models\\LineUserProfile.cs",
               "RelativeDocumentMoniker": "line\\Models\\LineUserProfile.cs",

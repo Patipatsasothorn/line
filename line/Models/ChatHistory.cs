@@ -10,6 +10,8 @@
         public DateTime Timestamp { get; set; }
         public string DisplayName { get; set; }
         public string PictureUrl { get; set; }
+        public bool IsReply { get; set; }
+
     }
 
 }

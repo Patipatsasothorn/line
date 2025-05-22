@@ -136,7 +136,7 @@ namespace line.Controllers
                     }
 
                     ChatStorage.Add(userId, message);
-                    await SaveChatToDatabase(userId, profile.DisplayName, message, profile.PictureUrl, timestamp, oaName, BotId);
+                    await SaveChatToDatabase(userId, profile.DisplayName, message, profile.PictureUrl, timestamp, oaName, BotId, isReply: false);
 
                     await _hubContext.Clients.All.SendAsync(
                         "ReceiveMessage",
@@ -146,7 +146,8 @@ namespace line.Controllers
                         timestamp,
                         userId,
                         oaName,
-                        BotId
+                        BotId,
+                        false
                     );
 
                     await _hubContext.Clients.All.SendAsync(
@@ -189,7 +190,7 @@ namespace line.Controllers
             using var connection = new SqlConnection(connectionString);
 
             var query = @"
-        SELECT TOP 100 Id, UserId, OAName, BotId, Message, Timestamp, DisplayName, PictureUrl
+        SELECT TOP 100 Id, UserId, OAName, BotId, Message, Timestamp, DisplayName, PictureUrl,IsReply
         FROM dbo.ChatHistory
         WHERE OAName IN @DisplayNames
         ORDER BY Timestamp DESC";
@@ -201,16 +202,18 @@ namespace line.Controllers
 
             foreach (var chat in chats)
             {
-                await _hubContext.Clients.All.SendAsync(
-                    "ReceiveMessage",
-                    chat.DisplayName,
-                    chat.Message,
-                    chat.PictureUrl,
-                    chat.Timestamp.ToString("HH:mm"),
-                    chat.UserId,
-                    chat.OAName,
-                    chat.BotId
-                );
+                //await _hubContext.Clients.All.SendAsync(
+                //    "ReceiveMessage",
+                //    chat.DisplayName,
+                //    chat.Message,
+                //    chat.PictureUrl,
+                //    chat.Timestamp.ToString("HH:mm"),
+                //    chat.UserId,
+                //    chat.OAName,
+                //    chat.BotId,
+                //    chat.IsReply  // เพิ่มพารามิเตอร์นี้
+                //);
+
 
                 await _hubContext.Clients.All.SendAsync(
                     "UpdateChatList",
@@ -226,7 +229,47 @@ namespace line.Controllers
 
             return Json(new { success = true, count = chats.AsList().Count });
         }
-        private async Task SaveChatToDatabase(string userId, string displayName, string message, string pictureUrl, string timestamp, string oaName, string botId)
+        [HttpPost]
+        public async Task<IActionResult> ReceiveMessageHistories([FromBody] ReceiveChatHistoryRequest request)
+        {
+            if (request == null || string.IsNullOrEmpty(request.userId) || string.IsNullOrEmpty(request.botId))
+            {
+                return BadRequest("UserId or BotId missing.");
+            }
+
+            string connectionString = _configuration.GetConnectionString("DefaultConnection");
+            using var connection = new SqlConnection(connectionString);
+
+            var query = @"
+        SELECT TOP 100 Id, UserId, OAName, BotId, Message, Timestamp, DisplayName, PictureUrl, IsReply
+        FROM dbo.ChatHistory
+        WHERE UserId = @UserId AND BotId = @BotId
+        ORDER BY Timestamp ASC";
+
+            var chats = await connection.QueryAsync<ChatHistory>(
+                query,
+                new { UserId = request.userId, BotId = request.botId }
+            );
+
+            foreach (var chat in chats)
+            {
+                await _hubContext.Clients.All.SendAsync(
+                    "ReceiveMessage",
+                    chat.DisplayName,
+                    chat.Message,
+                    chat.PictureUrl,
+                    chat.Timestamp.ToString("HH:mm"),
+                    chat.UserId,
+                    chat.OAName,
+                    chat.BotId,
+                    chat.IsReply
+                );
+            }
+
+            return Json(new { success = true, count = chats.AsList().Count });
+        }
+
+        private async Task SaveChatToDatabase(string userId, string displayName, string message, string pictureUrl, string timestamp, string oaName, string botId, bool isReply)
         {
             string connectionString = _configuration.GetConnectionString("DefaultConnection");
 
@@ -236,9 +279,8 @@ namespace line.Controllers
 
                 string sql = @"
             INSERT INTO KEW_Live.dbo.ChatHistory 
-            (UserId, DisplayName, Message, PictureUrl, Timestamp, OAName, BotId)
-            VALUES (@UserId, @DisplayName, @Message, @PictureUrl, @Timestamp, @OAName, @BotId)";
-
+            (UserId, DisplayName, Message, PictureUrl, Timestamp, OAName, BotId, IsReply)
+            VALUES (@UserId, @DisplayName, @Message, @PictureUrl, @Timestamp, @OAName, @BotId, @IsReply)";
                 using (var command = new SqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@UserId", userId);
@@ -248,6 +290,7 @@ namespace line.Controllers
                     command.Parameters.AddWithValue("@Timestamp", DateTime.ParseExact(timestamp, "HH:mm", null)); // หรือ DateTime.Now
                     command.Parameters.AddWithValue("@OAName", oaName ?? "");
                     command.Parameters.AddWithValue("@BotId", botId);
+                    command.Parameters.AddWithValue("@IsReply", isReply);
 
                     await command.ExecuteNonQueryAsync();
                 }
@@ -265,7 +308,7 @@ namespace line.Controllers
 
                 foreach (var name in displayNames)
                 {
-                    string sql = @"SELECT * FROM KEW_Live.dbo.ChatHistory WHERE DisplayName = @DisplayName ORDER BY Timestamp ASC";
+                    string sql = @"SELECT * FROM KEW_Live.dbo.ChatHistory WHERE UserId = @DisplayName ORDER BY Timestamp ASC";
 
                     using (var command = new SqlCommand(sql, connection))
                     {
@@ -283,7 +326,9 @@ namespace line.Controllers
                                     PictureUrl = reader["PictureUrl"].ToString(),
                                     Timestamp = ((DateTime)reader["Timestamp"]).ToString("HH:mm"),
                                     OAName = reader["OAName"].ToString(),
-                                    BotId = reader["BotId"].ToString()
+                                    BotId = reader["BotId"].ToString(),
+                                    IsReply = reader["IsReply"] != DBNull.Value && Convert.ToBoolean(reader["IsReply"])
+
                                 });
                             }
                         }
@@ -387,19 +432,67 @@ namespace line.Controllers
                 _userIds.Remove(userId);
             }
         }
-
         [HttpPost("send-reply")]
         public async Task<IActionResult> SendReply([FromForm] ReplyFormDto dto, IFormFile imageFile)
         {
+            // เชื่อมต่อฐานข้อมูลสำหรับดึง OAName
+            string oaName = "";
+            string connectionString = _configuration.GetConnectionString("DefaultConnection");
+            using (var connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+
+                var query = @"
+            SELECT Oaname
+            FROM KEW_Live.dbo.line
+            WHERE BotUserId = @UserId";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserId", dto.UserId);
+
+                    var result = await command.ExecuteScalarAsync();
+                    if (result != null)
+                    {
+                        oaName = result.ToString();
+                    }
+                }
+            }
+
+            var timestamp = DateTime.Now.ToString("HH:mm");
+
             // ส่งข้อความ
             if (!string.IsNullOrEmpty(dto.Message))
             {
                 await PushMessage(dto.UserId, dto.Message, dto.BotId);
+
+                // บันทึกข้อความตอบกลับลงฐานข้อมูล (isReply = true)
+                await SaveChatToDatabase(
+                    dto.UserId,
+                    displayName: "คุณ",     // หรือใส่ชื่ออื่นที่ต้องการแสดงในฐานข้อมูล
+                    message: dto.Message,
+                    pictureUrl: "",
+                    timestamp: timestamp,
+                    oaName: oaName,
+                    botId: dto.BotId,
+                    isReply: true);
             }
             // ส่งสติกเกอร์ (ถ้ามี)
             else if (dto.StickerPackageId.HasValue && dto.StickerId.HasValue)
             {
                 await PushSticker(dto.UserId, dto.BotId, dto.StickerPackageId.Value, dto.StickerId.Value);
+
+                // บันทึกข้อความตอบกลับ (สามารถบันทึกเป็นข้อความแบบพิเศษหรือเก็บสติกเกอร์ในฟิลด์ message ก็ได้)
+                string stickerMessage = $"Sticker Package: {dto.StickerPackageId}, Sticker Id: {dto.StickerId}";
+                await SaveChatToDatabase(
+                    dto.UserId,
+                    displayName: "คุณ",
+                    message: stickerMessage,
+                    pictureUrl: "",
+                    timestamp: timestamp,
+                    oaName: oaName,
+                    botId: dto.BotId,
+                    isReply: true);
             }
 
             // ส่งรูปภาพถ้ามี
@@ -421,10 +514,22 @@ namespace line.Controllers
                 var imageUrl = $"{baseUrl}/uploads/{fileName}";
 
                 await PushImage(dto.UserId, imageUrl, dto.BotId);
+
+                // บันทึกรูปภาพตอบกลับในฐานข้อมูล
+                await SaveChatToDatabase(
+                    dto.UserId,
+                    displayName: "คุณ",
+                    message: "[ส่งรูปภาพ]",
+                    pictureUrl: imageUrl,
+                    timestamp: timestamp,
+                    oaName: oaName,
+                    botId: dto.BotId,
+                    isReply: true);
             }
 
             return Ok();
         }
+
 
         private async Task PushSticker(string userId, string botId, int packageId, int stickerId)
         {
