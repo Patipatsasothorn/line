@@ -8,7 +8,7 @@ namespace line.Controllers
     {
         private readonly string clientId = "2007354861";
         private readonly string clientSecret = "43950a842e7a70c3108345ebb068aa76";
-        private readonly string redirectUri = "https://localhost:7271/LineLogin/Callback";
+        private readonly string redirectUri = "https://lineoa.xcoptech.net/LineLogin/Callback";
 
         public IActionResult Login()
         {

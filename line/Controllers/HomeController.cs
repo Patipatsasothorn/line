@@ -113,7 +113,7 @@ namespace line.Controllers
                         await System.IO.File.WriteAllBytesAsync(filePath, imageData);
 
                         // สร้าง URL สำหรับแสดงบนเว็บ (เปลี่ยนให้ตรงกับ Host จริงถ้า Deploy แล้ว)
-                        string imageUrl = $"https://localhost:7271/uploads/{fileName}";
+                        string imageUrl = $"https://lineoa.xcoptech.net/uploads/{fileName}";
 
                         // ส่ง URL แทนข้อความ
                         message = imageUrl;
