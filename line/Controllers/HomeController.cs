@@ -573,8 +573,8 @@ namespace line.Controllers
                     await imageFile.CopyToAsync(stream);
                 }
 
-                var baseUrl = $"{Request.Scheme}://{Request.Host}";
-                var imageUrl = $"{baseUrl}/uploads/{fileName}";
+                //var baseUrl = $"{Request.Scheme}://{Request.Host}";
+                var imageUrl = $"https://lineoa.xcoptech.net/uploads/{fileName}";
 
                 await PushImage(dto.UserId, imageUrl, dto.BotId);
 

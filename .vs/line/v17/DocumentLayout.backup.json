@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\Kew\\line\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\controllers\\linelogincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\linelogincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -74,7 +74,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
@@ -150,8 +150,7 @@
               "RelativeToolTip": "line\\Views\\Home\\Privacy.cshtml",
               "ViewState": "AgIAANIEAAAAAAAAAAAAANoEAABiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-23T09:19:25.436Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T09:19:25.436Z"
             },
             {
               "$type": "Document",
@@ -163,8 +162,7 @@
               "RelativeToolTip": "line\\Models\\ChatHistory.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAAAqwAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T09:17:50.308Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T09:17:50.308Z"
             },
             {
               "$type": "Document",
@@ -204,26 +202,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "HomeController.cs",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "line\\Controllers\\HomeController.cs",
               "ToolTip": "D:\\Kew\\line\\line\\Controllers\\HomeController.cs",
               "RelativeToolTip": "line\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAHwCAAAAAAAAAAAnwKYCAABhAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKYCAABhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-23T06:57:36.633Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "LineLoginController.cs",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Controllers\\LineLoginController.cs",
               "RelativeDocumentMoniker": "line\\Controllers\\LineLoginController.cs",
               "ToolTip": "D:\\Kew\\line\\line\\Controllers\\LineLoginController.cs",
               "RelativeToolTip": "line\\Controllers\\LineLoginController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBkAAABGAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-23T06:50:09.215Z",
               "EditorCaption": ""
