@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "D:\\Kew\\line\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\controllers\\linelogincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\linelogincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\controllers\\lineoacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\lineoacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,10 +31,6 @@
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\autochatmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\controllers\\linelogincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\linelogincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\views\\home\\alllineoa.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\views\\home\\alllineoa.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -33,10 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\controllers\\lineoacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\lineoacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -70,7 +74,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
@@ -79,6 +83,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "site.css",
+              "DocumentMoniker": "D:\\Kew\\line\\line\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "line\\wwwroot\\css\\site.css",
+              "ToolTip": "D:\\Kew\\line\\line\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "line\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAqwBEAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-05-23T12:58:31.538Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "AutoChatModel.cs",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Models\\AutoChatModel.cs",
               "RelativeDocumentMoniker": "line\\Models\\AutoChatModel.cs",
@@ -90,7 +107,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "AccountSettingController.cs",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Controllers\\AccountSettingController.cs",
               "RelativeDocumentMoniker": "line\\Controllers\\AccountSettingController.cs",
@@ -102,19 +119,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
               "Title": "LineOAController.cs",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Controllers\\LineOAController.cs",
               "RelativeDocumentMoniker": "line\\Controllers\\LineOAController.cs",
               "ToolTip": "D:\\Kew\\line\\line\\Controllers\\LineOAController.cs",
               "RelativeToolTip": "line\\Controllers\\LineOAController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABcAAAAAAAAAA==",
+              "ViewState": "AgIAADIAAAAAAAAAAAAgwBAAAABcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T09:35:21.184Z"
+              "WhenOpened": "2025-05-23T09:35:21.184Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "alllineoa.cshtml",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Views\\Home\\alllineoa.cshtml",
               "RelativeDocumentMoniker": "line\\Views\\Home\\alllineoa.cshtml",
@@ -126,20 +144,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Privacy.cshtml",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Views\\Home\\Privacy.cshtml",
               "RelativeDocumentMoniker": "line\\Views\\Home\\Privacy.cshtml",
               "ToolTip": "D:\\Kew\\line\\line\\Views\\Home\\Privacy.cshtml",
               "RelativeToolTip": "line\\Views\\Home\\Privacy.cshtml",
-              "ViewState": "AgIAALcAAAAAAAAAAAAqwMMAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAIwAAAAAAAAAAAAnwJoAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-23T09:19:25.436Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "ChatHistory.cs",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Models\\ChatHistory.cs",
               "RelativeDocumentMoniker": "line\\Models\\ChatHistory.cs",
@@ -151,7 +169,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "line\\Views\\Shared\\_Layout.cshtml",
@@ -163,7 +181,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "AccountController.cs",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "line\\Controllers\\AccountController.cs",
@@ -175,7 +193,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Program.cs",
               "RelativeDocumentMoniker": "line\\Program.cs",
@@ -187,32 +205,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "HomeController.cs",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "line\\Controllers\\HomeController.cs",
               "ToolTip": "D:\\Kew\\line\\line\\Controllers\\HomeController.cs",
               "RelativeToolTip": "line\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAowG4AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAADEAAAAAAAAAAAAtwD0AAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-23T06:57:36.633Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "LineLoginController.cs",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Controllers\\LineLoginController.cs",
               "RelativeDocumentMoniker": "line\\Controllers\\LineLoginController.cs",
               "ToolTip": "D:\\Kew\\line\\line\\Controllers\\LineLoginController.cs",
               "RelativeToolTip": "line\\Controllers\\LineLoginController.cs",
-              "ViewState": "AgIAAF4AAAAAAAAAAAApwIEAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T06:50:09.215Z"
+              "WhenOpened": "2025-05-23T06:50:09.215Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "KewLiveModel.cs",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Models\\KewLiveModel.cs",
               "RelativeDocumentMoniker": "line\\Models\\KewLiveModel.cs",
@@ -224,7 +243,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "oatablecontext.cs",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Models\\oatablecontext.cs",
               "RelativeDocumentMoniker": "line\\Models\\oatablecontext.cs",
@@ -236,7 +255,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "ClientidContext.cs",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Models\\ClientidContext.cs",
               "RelativeDocumentMoniker": "line\\Models\\ClientidContext.cs",
@@ -248,7 +267,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "line\\Views\\Home\\Index.cshtml",

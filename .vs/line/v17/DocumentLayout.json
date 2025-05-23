@@ -90,8 +90,7 @@
               "RelativeToolTip": "line\\wwwroot\\css\\site.css",
               "ViewState": "AgIAAAoAAAAAAAAAAAAqwBEAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-05-23T12:58:31.538Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T12:58:31.538Z"
             },
             {
               "$type": "Document",
@@ -127,8 +126,7 @@
               "RelativeToolTip": "line\\Controllers\\LineOAController.cs",
               "ViewState": "AgIAADIAAAAAAAAAAAAgwBAAAABcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T09:35:21.184Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T09:35:21.184Z"
             },
             {
               "$type": "Document",
@@ -152,8 +150,7 @@
               "RelativeToolTip": "line\\Views\\Home\\Privacy.cshtml",
               "ViewState": "AgIAAIwAAAAAAAAAAAAnwJoAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-23T09:19:25.436Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T09:19:25.436Z"
             },
             {
               "$type": "Document",
@@ -213,8 +210,7 @@
               "RelativeToolTip": "line\\Controllers\\HomeController.cs",
               "ViewState": "AgIAADEAAAAAAAAAAAAtwD0AAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T06:57:36.633Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T06:57:36.633Z"
             },
             {
               "$type": "Document",
@@ -224,7 +220,7 @@
               "RelativeDocumentMoniker": "line\\Controllers\\LineLoginController.cs",
               "ToolTip": "D:\\Kew\\line\\line\\Controllers\\LineLoginController.cs",
               "RelativeToolTip": "line\\Controllers\\LineLoginController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-23T06:50:09.215Z",
               "EditorCaption": ""
