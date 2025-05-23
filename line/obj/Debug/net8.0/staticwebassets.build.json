@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9PQr1di0gszJorSg3QBm+x/BnUaiHbzjrjtghySY2F4=",
+  "Hash": "cqOsRA1Inh0y5VU8x1cpq+ykOtWErMN/ER8uaY1USvo=",
   "Source": "line",
   "BasePath": "_content/line",
   "Mode": "Default",
@@ -73,8 +73,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "kwoc724q6k",
-      "Integrity": "FHi2mDVGNH8/hzhPaIaNyxM9RanOZDd87CZVajneM/4=",
+      "Fingerprint": "actay404sa",
+      "Integrity": "CqWmL2fI09BMFIap9utfmhSqsePG+CmU5JrALWv0nWU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -1699,6 +1699,51 @@
   ],
   "Endpoints": [
     {
+      "Route": "css/site.actay404sa.css",
+      "AssetFile": "D:\\Kew\\line\\line\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1119"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CqWmL2fI09BMFIap9utfmhSqsePG+CmU5JrALWv0nWU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 23 May 2025 13:00:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "actay404sa"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-CqWmL2fI09BMFIap9utfmhSqsePG+CmU5JrALWv0nWU="
+        }
+      ]
+    },
+    {
       "Route": "css/site.css",
       "AssetFile": "D:\\Kew\\line\\line\\wwwroot\\css\\site.css",
       "Selectors": [],
@@ -1709,7 +1754,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "654"
+          "Value": "1119"
         },
         {
           "Name": "Content-Type",
@@ -1717,11 +1762,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"FHi2mDVGNH8/hzhPaIaNyxM9RanOZDd87CZVajneM/4=\""
+          "Value": "\"CqWmL2fI09BMFIap9utfmhSqsePG+CmU5JrALWv0nWU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 04:10:28 GMT"
+          "Value": "Fri, 23 May 2025 13:00:21 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1731,52 +1776,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-FHi2mDVGNH8/hzhPaIaNyxM9RanOZDd87CZVajneM/4="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.kwoc724q6k.css",
-      "AssetFile": "D:\\Kew\\line\\line\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "654"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"FHi2mDVGNH8/hzhPaIaNyxM9RanOZDd87CZVajneM/4=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 04:10:28 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "kwoc724q6k"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-FHi2mDVGNH8/hzhPaIaNyxM9RanOZDd87CZVajneM/4="
+          "Value": "sha256-CqWmL2fI09BMFIap9utfmhSqsePG+CmU5JrALWv0nWU="
         }
       ]
     },
