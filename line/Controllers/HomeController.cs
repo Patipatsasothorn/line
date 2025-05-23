@@ -45,7 +45,70 @@ namespace line.Controllers
 
             return View();
         }
+        [HttpGet]
+        public IActionResult GetAutoChatMessages(string botId)
+        {
+            string connectionString = _configuration.GetConnectionString("DefaultConnection");
+            var messages = new List<object>();
 
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "SELECT Id, Message FROM autoChat WHERE BotId = @BotId ORDER BY CreatedAt DESC";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@BotId", botId);
+                    conn.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            messages.Add(new
+                            {
+                                Id = reader["Id"].ToString(),
+                                Message = reader["Message"].ToString()
+                            });
+                        }
+                    }
+
+                    conn.Close();
+                }
+            }
+
+            return Json(messages);
+        }
+
+        [HttpPost]
+        public IActionResult SaveautoChat([FromBody] AutoChatModel model)
+        {
+            string connectionString = _configuration.GetConnectionString("DefaultConnection");
+            var userId = HttpContext.Session.GetString("Username");
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = @"INSERT INTO autoChat (BotId, Message)
+                             VALUES (@BotId, @Message)";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@BotId", model.BotId);
+                    cmd.Parameters.AddWithValue("@Message", model.Massage);
+
+                    conn.Open();
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    conn.Close();
+
+                    if (rowsAffected > 0)
+                    {
+                        return Json(new { success = true });
+                    }
+                    else
+                    {
+                        return Json(new { success = false, message = "Insert failed." });
+                    }
+                }
+            }
+        }
         public IActionResult Privacy()
         {
             var chats = ChatStorage.GetAll();

@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 //    options.ListenAnyIP(8080);
 //});
 builder.Services.AddDbContext<oatablecontext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<ClientidContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 

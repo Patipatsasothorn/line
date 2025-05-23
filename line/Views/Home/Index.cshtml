@@ -1,20 +1,261 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var webUsername = Context.Session.GetString("Username");
+
 }
 
 <div class="d-flex flex-column justify-content-center align-items-center text-center" style="height: 80vh; ">
-    <div style="background-color:white;padding:4rem;display:flex;flex-direction:column;align-items:center;border-radius:16px;box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;">
-            <h1 class="mb-3">ยินดีต้อนรับเข้าสู่ระบบรวมแชทของเรา</h1>
+    <div id="lineLoginForm" style="background-color:white;padding:4rem;display:flex;flex-direction:column;align-items:center;border-radius:16px;box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; display:none">
+        <h1 class="mb-3">ยินดีต้อนรับเข้าสู่ระบบรวมแชทของเรา</h1>
         <p class="mb-4 text-muted">
             เข้าสู่ระบบด้วยบัญชี LINE ของคุณเพื่อเริ่มต้นใช้งาน<br />
             และเชื่อมต่อกับบัญชี Official Account ของคุณได้ทันที
         </p>
-        
-        <a href="/LineLogin/Login" class="btn btn-success btn-lg shadow d-flex align-items-center px-4 py-2" style="border-radius: 50px;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE" width="30" height="30" class="me-2">
-            <strong>Login with LINE</strong>
-        </a>
+        <p class="mb-4 text-muted">
+            @webUsername
+            <!-- ปุ่ม -->
+            <button id="customLoginBtn" class="btn btn-success btn-lg shadow d-flex align-items-center px-4 py-2" style="border-radius: 50px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE" width="30" height="30" class="me-2">
+                <strong>Login with LINE</strong>
+            </button>
+
+
+        <div class="container mt-5">
+
+            <div class="card shadow-lg" id="fromhavedata">
+                <div class="card-header bg-primary text-white">
+                    เพิ่มข้อมูล KEW_Live
+                </div>
+                <div class="card-body">
+                    <form asp-action="SaveLive" method="post">
+                        <div class="mb-3">
+                            <label for="Name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="NameHavedata" name="Name" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="ClientId" class="form-label">Client ID</label>
+                            <input type="text" class="form-control" id="ClientIddt" name="ClientId" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="ClientSecret" class="form-label">Client Secret</label>
+                            <input type="text" class="form-control" id="ClientSecretdt" name="ClientSecret" required />
+                        </div>
+                        <button type="submit" class="btn btn-success">บันทึกข้อมูล</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-  
+    <div class="modal fade" id="clientSelectModal" tabindex="-1" aria-labelledby="clientSelectModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="clientSelectModalLabel">เลือกบัญชี KEW_Live ที่จะใช้เข้าสู่ระบบ</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="ปิด"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered" id="modalKewLiveTable">
+                        <thead>
+                            <tr>
+                                <th>เลือก</th>
+                                <th>ชื่อ</th>
+                                <th>Client ID</th>
+                                <th>Client Secret</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- JS จะเติมข้อมูล -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button id="confirmClientSelection" class="btn btn-primary">เข้าสู่ระบบด้วยบัญชีนี้</button>
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">ยกเลิก</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
+
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function() {
+          $('#formCard form').submit(function(e) {
+            e.preventDefault(); // ป้องกันการ submit แบบปกติ (รีเฟรชหน้า)
+
+            var formData = {
+              Name: $('#Name').val(),
+              ClientId: $('#ClientId').val(),
+              ClientSecret: $('#ClientSecret').val()
+            };
+
+            $.ajax({
+              url: '/LineLogin/SaveLive', // Controller Action
+              type: 'POST',
+              data: formData,
+              success: function(response) {
+                if(response.success) {
+                  alert('บันทึกข้อมูลสำเร็จ!');
+
+                  // เคลียร์ฟอร์ม
+                  $('#formCard form')[0].reset();
+
+                  // โหลดข้อมูลใหม่ด้วย AJAX
+                  loadKEWLiveData();
+                } else {
+                  alert('บันทึกข้อมูลไม่สำเร็จ: ' + (response.message || 'Unknown error'));
+                }
+              },
+              error: function() {
+                alert('เกิดข้อผิดพลาดขณะบันทึกข้อมูล');
+              }
+            });
+          });
+
+          function loadKEWLiveData() {
+            $.ajax({
+              url: '/LineLogin/oatable',
+              type: 'GET',
+              dataType: 'json',
+              success: function(data) {
+                if(data && data.length > 0) {
+                  $('#dataCard').show();
+                  $('#formCard').hide();
+                  $('#lineLoginForm').show();
+
+                  var tbody = $('#kewLiveTable tbody');
+                  tbody.empty();
+
+                  $.each(data, function(i, item) {
+                    var row = `<tr>
+                      <td>${item.name}</td>
+                      <td>${item.clientId}</td>
+                      <td>${item.clientSecret}</td>
+                    </tr>`;
+                    tbody.append(row);
+                  });
+                } else {
+                  $('#formCard').show();
+                }
+              },
+              error: function() {
+                $('#formCard').show();
+              }
+            });
+          }
+
+          // โหลดข้อมูลตอนหน้าโหลดเสร็จเลย
+          loadKEWLiveData();
+                      // จัดการการ submit ฟอร์ม #fromhavedata
+            $('#fromhavedata form').on('submit', function(e) {
+                e.preventDefault();
+
+                const formData = {
+                    Name: $('#NameHavedata').val(),
+                    ClientId: $('#ClientIddt').val(),
+                    ClientSecret: $('#ClientSecretdt').val()
+                };
+
+                $.ajax({
+                    url: '/LineLogin/SaveLive', // Controller endpoint
+                    method: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        if (response.success) {
+                            alert('บันทึกข้อมูลสำเร็จ!');
+                            $('#fromhavedata form')[0].reset();
+                            loadKEWLiveData(); // โหลดข้อมูลใหม่เข้าตาราง
+                        } else {
+                            alert('เกิดข้อผิดพลาด: ' + (response.message || 'ไม่สามารถบันทึกได้'));
+                        }
+                    },
+                    error: function() {
+                        alert('ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้');
+                    }
+                });
+            });
+
+            // ฟังก์ชันโหลดข้อมูลเข้าตาราง
+            function loadKEWLiveData() {
+                $.get('/LineLogin/oatable', function(data) {
+                    const tbody = $('#kewLiveTable tbody');
+                    tbody.empty();
+                                       $('#dataCard').show();
+                   $('#formCard').hide();
+                   $('#lineLoginForm').show();
+                    if (Array.isArray(data) && data.length > 0) {
+                        data.forEach(function(row) {
+                            const html = `
+                                <tr>
+                                    <td>${row.userid}</td>
+                                    <td>${row.clientId}</td>
+                                    <td>${row.clientSecret}</td>
+                                </tr>`;
+                            tbody.append(html);
+                        });
+                        $('#dataCard').show();
+                    } else {
+                        $('#dataCard').hide();
+                    }
+                }).fail(function() {
+                    alert('โหลดข้อมูลไม่สำเร็จ');
+                });
+            }
+
+            // เรียกใช้เมื่อลoadหน้าครั้งแรก
+            loadKEWLiveData();
+       });
+
+    </script>
+    <script>
+        // กดปุ่ม Login -> แสดง Modal และโหลดข้อมูล
+        $('#customLoginBtn').on('click', function () {
+            loadClientsToModal(); // โหลดข้อมูล KEW_Live ลง modal
+            const modal = new bootstrap.Modal(document.getElementById('clientSelectModal'));
+            modal.show();
+        });
+
+        // โหลดข้อมูลเข้า modal table
+        function loadClientsToModal() {
+            $.get('/LineLogin/oatable', function (data) {
+                const tbody = $('#modalKewLiveTable tbody');
+                tbody.empty();
+
+                if (Array.isArray(data) && data.length > 0) {
+                    data.forEach(function (row) {
+                        const html = `
+                            <tr>
+                                <td><input type="radio" name="selectedClient" value="${row.clientId}|${row.clientSecret}" /></td>
+                                <td>${row.userid}</td>
+                                <td>${row.clientId}</td>
+                                <td>${row.clientSecret}</td>
+                            </tr>`;
+                        tbody.append(html);
+                    });
+                } else {
+                    tbody.append('<tr><td colspan="4" class="text-center">ไม่พบข้อมูล</td></tr>');
+                }
+            });
+        }
+
+        // เมื่อยืนยันการเลือก
+        $('#confirmClientSelection').on('click', function () {
+            const selected = $('input[name="selectedClient"]:checked').val();
+
+            if (!selected) {
+                alert('กรุณาเลือกบัญชี KEW_Live');
+                return;
+            }
+
+            const [clientId, clientSecret] = selected.split('|');
+
+            $.post('/LineLogin/SetClientTemp', { clientId, clientSecret }, function () {
+                window.location.href = '/LineLogin/Login';
+            });
+        });
+    </script>
+
+}

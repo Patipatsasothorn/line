@@ -33,14 +33,19 @@
     }
 
 </div>
+
 <div class="container-fluid mt-4" style="height: 90vh;">
     <div class="modal fade" id="createVipModal" tabindex="-1" aria-labelledby="createVipModalLabel" aria-hidden="true">
     <div class="modal-dialog">
+
         <form id="createVipForm" class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="createVipModalLabel">สร้าง แท้ก ใหม่</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
             </div>
+                
+
             <div class="modal-body">
                     <label for="vipNameInput" class="form-label">ชื่อ แท้ก:</label>
                 <input type="text" class="form-control" id="vipNameInput" required>
@@ -59,6 +64,7 @@
             <div class="d-flex align-items-center gap-2 mb-3">
                 <input type="text" id="chatSearch" class="form-control" placeholder="🔍 ค้นหาชื่อแชท...">
                 <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addOATokenModal">+</button>
+
             </div>
             <!-- ดรอปดาวน์กรองวัน -->
             <div class="mb-3 d-flex align-items-center gap-2">
@@ -69,8 +75,12 @@
                     <option value="5">เกิน 5 วัน</option>
                     <option value="7">เกิน 7 วัน</option>
                 </select>
+                <button id="loadChatsBtn" class="btn btn-primary">โหลดแชท</button>
+
             </div>
+
             <div class="mb-2">
+
                 <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#createVipModal">
                     ➕ สร้าง แท้ก
                 </button>
@@ -134,7 +144,70 @@
         </div>
     </div>
     <!-- Modal -->
+    <!-- Modal -->
+    <div class="modal fade" id="standardReplyModal" tabindex="-1" aria-labelledby="standardReplyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="standardReplyModalLabel">ข้อความล่วงหน้า</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
 
+                    <!-- Tabs -->
+                    <ul class="nav nav-tabs" id="replyTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button" role="tab" aria-controls="tab1" aria-selected="true">ข้อความล่วงหน้า</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab" aria-controls="tab2" aria-selected="false">แท็บ 2</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button" role="tab" aria-controls="tab3" aria-selected="false">แท็บ 3</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content mt-3" id="replyTabContent">
+                        <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+
+                            <input type="hidden" id="Botidmodel" />
+
+                            <!-- กล่องข้อความ -->
+                            <textarea class="form-control" id="newMessage" rows="3" placeholder="พิมพ์ข้อความล่วงหน้า"></textarea>
+
+                            <!-- ปุ่มบันทึก -->
+                            <button class="btn btn-primary mt-2" id="saveMessageBtn">บันทึกข้อความ</button>
+
+                            <!-- ตารางแสดงข้อความ -->
+                            <table class="table table-striped mt-3" id="messagesTable">
+                                <thead>
+                                    <tr>
+                                        <th>ข้อความ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- ข้อมูลจะเติมจาก JS -->
+                                </tbody>
+                            </table>
+
+                            <!-- ปุ่มส่งข้อความที่เลือก -->
+                            <button class="btn btn-success" id="sendSelectedMessageBtn" disabled>ส่งข้อความ</button>
+
+                        </div>
+
+                        <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+                            <p>แท็บ 2 ยังว่าง</p>
+                        </div>
+
+                        <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
+                            <p>แท็บ 3 ยังว่าง</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="modal fade" id="addToVipModal" tabindex="-1" aria-labelledby="addToVipModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <form id="addToVipForm" class="modal-content">
@@ -193,15 +266,102 @@
             </form>
         </div>
     </div>
-    <button id="loadChatsBtn" class="btn btn-primary">โหลดแชท</button>
 
 </div>
 @section Scripts {
+    <script>
+        document.getElementById('saveMessageBtn').addEventListener('click', function () {
+            const message = document.getElementById('newMessage').value.trim();
+            const botId = document.getElementById('Botidmodel').value;
+
+            if (!message) {
+                alert("กรุณาพิมพ์ข้อความก่อนบันทึก");
+                return;
+            }
+
+            fetch('/Home/SaveautoChat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    Massage: message,
+                    BotId: botId
+                })
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    alert("บันทึกข้อความสำเร็จ");
+                    document.getElementById('newMessage').value = ""; // ล้าง textarea
+                    // TODO: รีเฟรชตารางแสดงข้อความล่วงหน้าหลังบันทึกสำเร็จ (optional)
+                } else {
+                    alert("บันทึกไม่สำเร็จ: " + (result.message || "ไม่ทราบสาเหตุ"));
+                }
+            })
+            .catch(error => {
+                console.error('เกิดข้อผิดพลาดในการส่งข้อมูล:', error);
+                alert("เกิดข้อผิดพลาดในการส่งข้อมูล");
+            });
+        });
+    </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
     <!-- JavaScript toggle logic -->
     <script>
+    
+
              // JavaScript (ใช้ Bootstrap 5)
+        document.getElementById('openStandardReplyModal').addEventListener('click', function () {
+            const botIdValue = document.getElementById('Botid').value;
+            document.getElementById('Botidmodel').value = botIdValue;
+
+            // โหลดข้อความจากฐานข้อมูล
+            fetch(`/Home/GetAutoChatMessages?botId=${encodeURIComponent(botIdValue)}`)
+                .then(res => res.json())
+                .then(data => {
+                    const tbody = document.querySelector('#messagesTable tbody');
+                    tbody.innerHTML = ''; // เคลียร์ข้อมูลเก่า
+
+                    data.forEach(row => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `<td>${row.message}</td>`;
+                        tr.style.cursor = 'pointer';
+
+                        tr.addEventListener('click', function () {
+                            // ล้าง selection เก่า
+                            document.querySelectorAll('#messagesTable tbody tr').forEach(r => r.classList.remove('table-primary'));
+
+                            tr.classList.add('table-primary'); // ไฮไลต์แถวที่เลือก
+                            document.getElementById('sendSelectedMessageBtn').disabled = false;
+                            document.getElementById('sendSelectedMessageBtn').dataset.message = row.message;
+                        });
+
+                        tbody.appendChild(tr);
+                    });
+
+                    // เปิด Modal หลังโหลดเสร็จ
+                    var myModal = new bootstrap.Modal(document.getElementById('standardReplyModal'), {});
+                    myModal.show();
+                })
+                .catch(err => {
+                    console.error('Error loading messages:', err);
+                });
+        });
+
+        // เมื่อคลิกปุ่มส่งข้อความ
+        document.getElementById('sendSelectedMessageBtn').addEventListener('click', function () {
+            const message = this.dataset.message;
+            document.getElementById('reply-text').value = message;
+            this.disabled = true; // ปิดปุ่มอีกครั้ง
+                    // ปิด modal ด้วย Bootstrap API โดยอ้างจาก id
+        const modalElement = document.getElementById('standardReplyModal');
+        const modalInstance = bootstrap.Modal.getInstance(modalElement);
+        if (modalInstance) {
+            modalInstance.hide();
+        }
+
+        });
         document.getElementById('openStickerModal').addEventListener('click', function () {
           var myModal = new bootstrap.Modal(document.getElementById('stickerModal'), {});
           myModal.show();
@@ -433,22 +593,21 @@
                     // สร้าง badge ใหม่
                     badge = document.createElement('span');
                     badge.classList.add('unread-count-badge');
-                    // สไตล์ badge
-                    badge.style.cssText = `
-                        position: absolute;
-                        top: 8px;
-                        right: 8px;
-                        background-color: #28a745; /* สีเขียว */
-                        color: white;
-                        border-radius: 50%;
-                        padding: 2px 7px;
-                        font-size: 12px;
-                        font-weight: bold;
-                        user-select: none;
-                        min-width: 20px;
-                        text-align: center;
-                        line-height: 1;
-                    `;
+        badge.style.cssText = `
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 7px;
+            font-size: 12px;
+            font-weight: bold;
+            user-select: none;
+            min-width: 20px;
+            text-align: center;
+            line-height: 1;
+        `;
                     li.style.position = 'relative'; // เพื่อให้ badge อยู่ในตำแหน่งที่ถูกต้อง
                     li.appendChild(badge);
                     badge.textContent = "1";
@@ -710,7 +869,7 @@ document.getElementById('addToVipForm').addEventListener('submit', function (e) 
             // เพิ่มปุ่มลบออกจาก VIP
             const removeBtn = document.createElement('button');
             removeBtn.className = 'btn btn-sm btn-outline-danger ms-2';
-            removeBtn.textContent = 'ลบออกจาก VIP';
+            removeBtn.textContent = 'ลบออกจาก แท้ก';
             removeBtn.onclick = function (e) {
                 e.stopPropagation();
                 moveChatBackToNormal(userId, botName, cloneLi);
@@ -793,6 +952,7 @@ document.getElementById('addToVipForm').addEventListener('submit', function (e) 
                 console.log('userId:', userId);
                 console.log('botName:', botName);
                 console.log('botId:', botId);
+                document.getElementById('Botidmodel').value = botName;
 
                 const fullKey = `${userId}-${botId.replace(/\s+/g, '')}`;
 
@@ -1009,7 +1169,7 @@ document.getElementById('addToVipForm').addEventListener('submit', function (e) 
               const img = document.createElement('img');
               img.src = `https://stickershop.line-scdn.net/stickershop/v1/sticker/${stickerId}/ANDROID/sticker.png`;
               img.alt = 'Sticker';
-              img.style.width = '100px';
+              img.style.width = '80px';
               img.style.cursor = 'pointer';
               img.dataset.packageId = pkg.packageId;
               img.dataset.stickerId = stickerId;
