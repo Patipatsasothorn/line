@@ -7,7 +7,26 @@ html {
     font-size: 16px;
   }
 }
+/* กำหนด modal ให้กว้าง 80% ของหน้าจอ */
+#selectCardTypeModal .modal-dialog {
+    max-width: 40vw; /* 80% ของ viewport width */
+    width: 80vw;
+}
 
+/* ลดขนาด card type */
+#selectCardTypeModal .w-fix-160 {
+    width: 120px; /* จากเดิม 160px ลดเหลือ 120px */
+}
+
+#selectCardTypeModal .figure-img {
+    max-width: 100px; /* ลดขนาดรูป */
+    height: auto;
+}
+
+/* ปรับ margin ให้ card type ไม่แน่นเกินไป */
+#selectCardTypeModal .m-2 {
+    margin: 8px;
+}
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }

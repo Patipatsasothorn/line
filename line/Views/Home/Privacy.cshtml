@@ -149,7 +149,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="standardReplyModalLabel">ข้อความล่วงหน้า</h5>
+                    <h5 class="modal-title" id="standardReplyModalLabel">Select item</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -157,13 +157,10 @@
                     <!-- Tabs -->
                     <ul class="nav nav-tabs" id="replyTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button" role="tab" aria-controls="tab1" aria-selected="true">ข้อความล่วงหน้า</button>
+                            <button class="nav-link active" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button" role="tab" aria-controls="tab1" aria-selected="true">Standard replies</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab" aria-controls="tab2" aria-selected="false">แท็บ 2</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button" role="tab" aria-controls="tab3" aria-selected="false">แท็บ 3</button>
+                            <button class="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab" aria-controls="tab2" aria-selected="false">Card-based message</button>
                         </li>
                     </ul>
 
@@ -196,7 +193,42 @@
                         </div>
 
                         <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
-                            <p>แท็บ 2 ยังว่าง</p>
+                            <div data-v-640368bd="">
+                                <div data-v-640368bd="">
+                                    <div class="d-flex justify-content-between align-items-center mb-2"><h2 class="mb-0">Card-based message</h2> </div> <div data-v-640368bd="" class="text-muted text-pre-line">
+                                        Card-based messages let you present content over multiple cards in carousel format, packed into a single chat bubble.
+                                        Users can swipe left and right to see your content at their own pace.
+                                    </div> <hr>
+                                </div> <div data-v-640368bd="" class="btn-toolbar justify-content-between my-4">
+                                    <div data-v-640368bd="" class="btn-group"><!----></div> <div data-v-640368bd="" class="btn-group">
+                                        <button data-v-640368bd="" disabled="disabled" type="button" class="w-min-120 btn btn-primary disabled">
+                                            Save
+                                        </button>
+                                    </div>
+                                </div> <div data-v-640368bd="">
+                                    <hr class="my-4"> <section>
+                                        <div class="form-group row w-max-800">
+                                            <label class="col-sm-3 col-form-label text-right"><h4>ID</h4></label> <div class="col-sm-9 col-form-label">
+                                                Issued after creation
+                                            </div>
+                                        </div> <div class="form-group row w-max-800"><label class="col-sm-3 col-form-label text-right"><h4>Item name</h4></label> <div class="col-sm-9"><div><input placeholder="Item name" data-vv-name="mainTitle" type="text" name="mainTitle" autocomplete="off" class="form-control w-100 mr-2" aria-required="true" aria-invalid="false"> <span class="float-right"><strong class="text-muted">0</strong><span class="">/100</span></span></div> <!----> <small class="form-text text-muted">The item name is shown in push notifications and in the user's chat list.</small></div></div>
+                                    </section> <hr class="my-4">
+                                </div> <div data-v-7f249f30="" data-v-640368bd="">
+                                    <div data-v-7f249f30="">
+                                        <h4 data-v-7f249f30="" class="mb-4">
+                                            Card settings
+                                            <i data-v-7f249f30="" class="lar la-question-circle ml-1"></i>
+                                        </h4> <div data-v-7f249f30=""><div class="form-group row w-max-800"><label class="col-sm-3 col-form-label text-sm-right font-weight-light">Card type</label> <div class="col-sm-9"><div class="input-group align-items-center"><div class="mr-2"></div> <div class="input-group-append">
+                                            <button type="button" id="SelectLine" class="btn btn-outline-secondary">Select</button></div></div></div></div> <!----> <!----></div>
+                                    </div> <!---->
+                                </div> <!----> <hr data-v-640368bd="" class="my-4"> <div data-v-640368bd="" class="d-flex justify-content-center p-4">
+                                    <div data-v-640368bd="" class="p-4">
+                                        <button data-v-640368bd="" disabled="disabled" type="button" class="px-5 btn btn-primary btn-undefined disabled">
+                                            Save
+                                        </button>
+                                    </div>
+                                </div> 
+                            </div>
                         </div>
 
                         <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
@@ -204,6 +236,64 @@
                         </div>
                     </div>
 
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal structure ครบ -->
+    <div class="modal fade" id="selectCardTypeModal" tabindex="-1" aria-labelledby="selectCardTypeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header flex-shrink-0">
+                    <h5 class="mb-0">Select card type</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body mh-100 overflow-hidden">
+                    <div class="d-flex justify-content-center flex-wrap">
+                        <div class="w-fix-160 m-2 cursor-pointer">
+                            <div class="figure figure-grid">
+                                <img src="https://static.line-scdn.net/biz-app/edge/manager/img/cardtypemessage/message_type_01_off@3x.png" class="figure-img" alt="Products">
+                            </div>
+                            <div class="kv-radio form-check custom-control custom-radio cursor-pointer form-check-inline">
+                                <input id="05r3jacjnsy5" name="messageType" type="radio" class="custom-control-input">
+                                <label for="05r3jacjnsy5" class="custom-control-label">Products</label>
+                            </div>
+                        </div>
+
+                        <div class="w-fix-160 m-2 cursor-pointer">
+                            <div class="figure figure-grid">
+                                <img src="https://static.line-scdn.net/biz-app/edge/manager/img/cardtypemessage/message_type_02_off@3x.png" class="figure-img" alt="Places">
+                            </div>
+                            <div class="kv-radio form-check custom-control custom-radio cursor-pointer form-check-inline">
+                                <input id="fk9uyhdhp5" name="messageType" type="radio" class="custom-control-input">
+                                <label for="fk9uyhdhp5" class="custom-control-label">Places</label>
+                            </div>
+                        </div>
+
+                        <div class="w-fix-160 m-2 cursor-pointer">
+                            <div class="figure figure-grid">
+                                <img src="https://static.line-scdn.net/biz-app/edge/manager/img/cardtypemessage/message_type_03_off@3x.png" class="figure-img" alt="People">
+                            </div>
+                            <div class="kv-radio form-check custom-control custom-radio cursor-pointer form-check-inline">
+                                <input id="ae0frri39o6" name="messageType" type="radio" class="custom-control-input">
+                                <label for="ae0frri39o6" class="custom-control-label">People</label>
+                            </div>
+                        </div>
+
+                        <div class="w-fix-160 m-2 cursor-pointer">
+                            <div class="figure figure-grid">
+                                <img src="https://static.line-scdn.net/biz-app/edge/manager/img/cardtypemessage/message_type_04_off@3x.png" class="figure-img" alt="Pictures">
+                            </div>
+                            <div class="kv-radio form-check custom-control custom-radio cursor-pointer form-check-inline">
+                                <input id="3ejxusumpgi" name="messageType" type="radio" class="custom-control-input">
+                                <label for="3ejxusumpgi" class="custom-control-label">Pictures</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex flex-row-reverse flex-shrink-0">
+                    <button disabled id="confirmCardTypeBtn" type="button" class="btn btn-primary">Select</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
@@ -270,6 +360,8 @@
 </div>
 @section Scripts {
     <script>
+
+
         document.getElementById('saveMessageBtn').addEventListener('click', function () {
             const message = document.getElementById('newMessage').value.trim();
             const botId = document.getElementById('Botidmodel').value;
@@ -309,7 +401,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
     <!-- JavaScript toggle logic -->
     <script>
-    
+
 
              // JavaScript (ใช้ Bootstrap 5)
         document.getElementById('openStandardReplyModal').addEventListener('click', function () {
@@ -392,7 +484,15 @@
     </script>
     <script>
             document.addEventListener("DOMContentLoaded", function() {
-                                fetch('/Home/GetChatHistories', {
+         const selectLineBtn = document.getElementById('SelectLine');
+
+                if (selectLineBtn) {
+                    selectLineBtn.addEventListener('click', function () {
+                        const modal = new bootstrap.Modal(document.getElementById('selectCardTypeModal'));
+                        modal.show();
+                    });
+                }
+            fetch('/Home/GetChatHistories', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ displayNames: @Html.Raw(JsonConvert.SerializeObject(displayNameList)) })

@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "D:\\Kew\\line\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\models\\autochatmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\autochatmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\models\\autochatmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\autochatmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\controllers\\linelogincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -70,7 +70,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -78,7 +78,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "AutoChatModel.cs",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Models\\AutoChatModel.cs",
               "RelativeDocumentMoniker": "line\\Models\\AutoChatModel.cs",
@@ -86,8 +86,7 @@
               "RelativeToolTip": "line\\Models\\AutoChatModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T10:30:18.212Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T10:30:18.212Z"
             },
             {
               "$type": "Document",
@@ -99,8 +98,7 @@
               "RelativeToolTip": "line\\Controllers\\AccountSettingController.cs",
               "ViewState": "AgIAAIIAAAAAAAAAAAAkwAsAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T09:35:36.245Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T09:35:36.245Z"
             },
             {
               "$type": "Document",
@@ -112,8 +110,7 @@
               "RelativeToolTip": "line\\Controllers\\LineOAController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T09:35:21.184Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T09:35:21.184Z"
             },
             {
               "$type": "Document",
@@ -125,18 +122,17 @@
               "RelativeToolTip": "line\\Views\\Home\\alllineoa.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-23T09:32:25.699Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T09:32:25.699Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Privacy.cshtml",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Views\\Home\\Privacy.cshtml",
               "RelativeDocumentMoniker": "line\\Views\\Home\\Privacy.cshtml",
               "ToolTip": "D:\\Kew\\line\\line\\Views\\Home\\Privacy.cshtml",
               "RelativeToolTip": "line\\Views\\Home\\Privacy.cshtml",
-              "ViewState": "AgIAAAoBAAAAAAAAAAAowCkBAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAALcAAAAAAAAAAAAqwMMAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-23T09:19:25.436Z",
               "EditorCaption": ""
@@ -151,8 +147,7 @@
               "RelativeToolTip": "line\\Models\\ChatHistory.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAA5wAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T09:17:50.308Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T09:17:50.308Z"
             },
             {
               "$type": "Document",
@@ -164,8 +159,7 @@
               "RelativeToolTip": "line\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAADYAAAAAAAAAAAAQwEUAAACLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-23T07:44:29.273Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T07:44:29.273Z"
             },
             {
               "$type": "Document",
@@ -177,8 +171,7 @@
               "RelativeToolTip": "line\\Controllers\\AccountController.cs",
               "ViewState": "AgIAAEcAAAAAAAAAAAAgwFYAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T07:42:35.748Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T07:42:35.748Z"
             },
             {
               "$type": "Document",
@@ -190,18 +183,17 @@
               "RelativeToolTip": "line\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T06:47:40.796Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T06:47:40.796Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "HomeController.cs",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "line\\Controllers\\HomeController.cs",
               "ToolTip": "D:\\Kew\\line\\line\\Controllers\\HomeController.cs",
               "RelativeToolTip": "line\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAAEEAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAowG4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-23T06:57:36.633Z",
               "EditorCaption": ""
@@ -216,8 +208,7 @@
               "RelativeToolTip": "line\\Controllers\\LineLoginController.cs",
               "ViewState": "AgIAAF4AAAAAAAAAAAApwIEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T06:50:09.215Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T06:50:09.215Z"
             },
             {
               "$type": "Document",
@@ -229,8 +220,7 @@
               "RelativeToolTip": "line\\Models\\KewLiveModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T06:49:38.476Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T06:49:38.476Z"
             },
             {
               "$type": "Document",
@@ -242,8 +232,7 @@
               "RelativeToolTip": "line\\Models\\oatablecontext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T06:48:22.056Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T06:48:22.056Z"
             },
             {
               "$type": "Document",
@@ -255,21 +244,19 @@
               "RelativeToolTip": "line\\Models\\ClientidContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T06:48:08.803Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T06:48:08.803Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "line\\Views\\Home\\Index.cshtml",
               "ToolTip": "D:\\Kew\\line\\line\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "line\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-23T02:47:55.574Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-23T02:47:55.574Z"
             }
           ]
         }
