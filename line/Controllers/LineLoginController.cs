@@ -10,7 +10,7 @@ namespace line.Controllers
 {
     public class LineLoginController : Controller
     {
-        private readonly string redirectUri = "https://lineoa.xcoptech.net/LineLogin/Callback";
+        private readonly string redirectUri = "https://lineoa.xcoptech.net/Callback";
 
         private readonly ClientidContext _clientidContext;
         private readonly IConfiguration _configuration;

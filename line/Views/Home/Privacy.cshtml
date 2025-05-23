@@ -544,46 +544,47 @@
             .withUrl("/chatHub")
             .build();
 
-        connection.on("ReceiveMessage", function (userName, message, pictureUrl, timestamp, userId, oaName, BotId, isReply) {
-            // สร้าง key ไม่ซ้ำกัน
+               connection.on("ReceiveMessage", function (userName, message, pictureUrl, timestamp, userId, oaName, BotId, isReply) {
             const fullKey = `${userId}-${BotId.replace(/\s+/g, '')}`;
 
             if (!chatHistories[fullKey]) {
                 chatHistories[fullKey] = [];
             }
 
-            // ตรวจสอบว่า message เป็น URL รูปภาพหรือไม่
-            let isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(message);
-
-            // กำหนด style ข้อความตาม isReply
             let messageContent;
-             if (isReply) {
-                    // ข้อความมุมขวา, พื้นหลังสีเขียวอ่อน
+
+            // ตรวจสอบว่า message เป็น '[ส่งรูปภาพ]' ให้ใช้ pictureUrl แสดงรูปแทน
+            if (message === '[ส่งรูปภาพ]') {
+                messageContent = `<img src="${pictureUrl}" alt="image" style="max-width: 500px; max-height: 350px; border-radius: 4px;" class="clickable-image" data-fullsize="${pictureUrl}" />`;
+            } else {
+                // ตรวจสอบว่า message เป็น URL รูปภาพปกติหรือไม่
+                let isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(message);
+
+                if (isReply) {
                     messageContent = isImage
                         ? `<img src="${message}" alt="image" style="max-width: 500px; max-height: 350px; border-radius: 4px;" class="clickable-image" data-fullsize="${message}" />`
                         : `<div class="bg-success text-white rounded p-2 px-3 shadow-sm" style="max-width: 300px; margin-left: auto;">${message}</div>`;
                 } else {
-                    // ข้อความปกติมุมซ้าย, พื้นหลังสีเทาอ่อน
                     messageContent = isImage
                         ? `<img src="${message}" alt="image" style="max-width: 500px; max-height: 350px; border-radius: 4px;" class="clickable-image" data-fullsize="${message}" />`
                         : `<div class="bg-light rounded p-2 px-3 shadow-sm" style="max-width: 300px;">${message}</div>`;
                 }
+            }
 
-                const profileImage = !isReply
-                    ? `<img src="${pictureUrl}" class="rounded-circle me-2 flex-shrink-0" width="40" height="40" alt="${userName}">`
-                    : "";
+            const profileImage = !isReply
+                ? `<img src="${pictureUrl}" class="rounded-circle me-2 flex-shrink-0" width="40" height="40" alt="${userName}">`
+                : "";
 
-                const item = `
-                    <div class="d-flex mb-3 ${isReply ? 'justify-content-end' : ''}">
-                        ${profileImage}
-                        <div>
-                            <div class="fw-bold mb-1">${userName}</div>
-                            ${messageContent}
-                            <small class="text-muted text-end" style="white-space: nowrap;">${timestamp}</small>
-                        </div>
+            const item = `
+                <div class="d-flex mb-3 ${isReply ? 'justify-content-end' : ''}">
+                    ${profileImage}
+                    <div>
+                        <div class="fw-bold mb-1">${userName}</div>
+                        ${messageContent}
+                        <small class="text-muted text-end" style="white-space: nowrap;">${timestamp}</small>
                     </div>
-                `;
-
+                </div>
+            `;
 
             chatHistories[fullKey].push(item);
 
@@ -596,7 +597,7 @@
                 document.getElementById("chat-messages").innerHTML += item;
             }
 
-            // จัดการการคลิกที่รูปภาพ
+            // เพิ่ม event click สำหรับรูปภาพใหม่
             let clickableImages = document.querySelectorAll('.clickable-image');
             clickableImages.forEach(image => {
                 image.addEventListener('click', function () {
@@ -605,10 +606,7 @@
                 });
             });
         });
-
-
-
-                // ฟังก์ชันเปิดรูปใน modal
+            // ฟังก์ชันเปิดรูปใน modal
         function openImageInModal(imageUrl) {
             const modalHtml = `
                 <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
@@ -1088,6 +1086,8 @@ document.getElementById('addToVipForm').addEventListener('submit', function (e) 
                         if (chatHistories[fullKey]) {
                             chatHistories[fullKey].forEach(msg => {
                                 document.getElementById("chat-messages").innerHTML += msg;
+                                document.getElementById("chat-messages").scrollTop = document.getElementById("chat-messages").scrollHeight;
+
                             });
                         } else {
                             console.log('No chat history cached for:', fullKey);
@@ -1103,7 +1103,7 @@ document.getElementById('addToVipForm').addEventListener('submit', function (e) 
             }
         }
 
-               function loadChatHistory(userId, botId) {
+         function loadChatHistory(userId, botId) {
             fetch(`/chat-history?userId=${userId}&botId=${botId}`)
                 .then(res => res.json())
                 .then(data => {
@@ -1136,6 +1136,7 @@ document.getElementById('addToVipForm').addEventListener('submit', function (e) 
                         chatBox.innerHTML += messageHtml;
                         chatHistories[fullKey].push(messageHtml);
                     });
+                    chatBox.scrollTop = chatBox.scrollHeight;
 
                     currentUserId = userId;
                 })
@@ -1145,9 +1146,19 @@ document.getElementById('addToVipForm').addEventListener('submit', function (e) 
                 });
         }
 
-             document.getElementById("reply-form").addEventListener("submit", function (e) {
+        document.getElementById("reply-form").addEventListener("submit", function (e) {
             e.preventDefault();
 
+            sendReply();
+        });
+
+        document.getElementById("reply-file").addEventListener("change", function () {
+            if (this.files.length > 0) {
+                sendReply();
+            }
+        });
+
+        function sendReply() {
             const message = document.getElementById("reply-text").value.trim();
             const userId = document.getElementById("Userid").value;
             const botId = document.getElementById("Botid").value;
@@ -1183,12 +1194,22 @@ document.getElementById('addToVipForm').addEventListener('submit', function (e) 
 
                     const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
+                    let contentHtml = "";
+                    if (file) {
+                        // แสดงรูปภาพในแชท
+                        const imageUrl = URL.createObjectURL(file);
+                        contentHtml = `<img src="${imageUrl}" alt="sent image" style="max-width: 300px; border-radius: 8px;">`;
+                    } else {
+                        // แสดงข้อความปกติ
+                        contentHtml = message;
+                    }
+
                     const item = `
                         <div class="d-flex justify-content-end mb-3">
                             <div>
                                 <div class="fw-bold mb-1 text-end">คุณ</div>
                                 <div class="bg-success text-white rounded p-2 px-3 shadow-sm" style="max-width: 300px;">
-                                    ${message}
+                                    ${contentHtml}
                                     <div class="text-end">
                                         <small class="text-white-50">${timestamp}</small>
                                     </div>
@@ -1198,12 +1219,13 @@ document.getElementById('addToVipForm').addEventListener('submit', function (e) 
                     `;
 
                     const fullKey = `${userId}-${botId.replace(/\s+/g, '')}`;
+                    if (!window.chatHistories) window.chatHistories = {};
                     if (!chatHistories[fullKey]) {
                         chatHistories[fullKey] = [];
                     }
                     chatHistories[fullKey].push(item);
 
-                    if (currentUserId === userId) {
+                    if (window.currentUserId === userId) {
                         document.getElementById("chat-messages").innerHTML += item;
                     }
                 } else {
@@ -1213,7 +1235,7 @@ document.getElementById('addToVipForm').addEventListener('submit', function (e) 
                 console.error("เกิดข้อผิดพลาดในการส่งข้อความ:", err);
                 alert("เกิดข้อผิดพลาดในการส่งข้อความ");
             });
-        });
+        }
 
                 const stickerPackages = [
           {

@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "D:\\Kew\\line\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\controllers\\lineoacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\lineoacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\controllers\\linelogincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\linelogincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\models\\chathistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\chathistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\controllers\\lineoacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\controllers\\lineoacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -47,10 +51,6 @@
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\models\\chathistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\chathistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|d:\\kew\\line\\line\\models\\kewlivemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E59482D0-17C0-4C9A-9C17-B889E00B4030}|line\\line.csproj|solutionrelative:line\\models\\kewlivemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -74,7 +74,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -82,7 +82,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "site.css",
               "DocumentMoniker": "D:\\Kew\\line\\line\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "line\\wwwroot\\css\\site.css",
@@ -94,7 +94,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "AutoChatModel.cs",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Models\\AutoChatModel.cs",
               "RelativeDocumentMoniker": "line\\Models\\AutoChatModel.cs",
@@ -106,7 +106,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "AccountSettingController.cs",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Controllers\\AccountSettingController.cs",
               "RelativeDocumentMoniker": "line\\Controllers\\AccountSettingController.cs",
@@ -118,20 +118,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "LineOAController.cs",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Controllers\\LineOAController.cs",
               "RelativeDocumentMoniker": "line\\Controllers\\LineOAController.cs",
               "ToolTip": "D:\\Kew\\line\\line\\Controllers\\LineOAController.cs",
               "RelativeToolTip": "line\\Controllers\\LineOAController.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAYwDcAAABeAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAYwCwAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T09:35:21.184Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T09:35:21.184Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "alllineoa.cshtml",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Views\\Home\\alllineoa.cshtml",
               "RelativeDocumentMoniker": "line\\Views\\Home\\alllineoa.cshtml",
@@ -143,32 +142,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Privacy.cshtml",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Views\\Home\\Privacy.cshtml",
               "RelativeDocumentMoniker": "line\\Views\\Home\\Privacy.cshtml",
               "ToolTip": "D:\\Kew\\line\\line\\Views\\Home\\Privacy.cshtml",
               "RelativeToolTip": "line\\Views\\Home\\Privacy.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJoAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAANIEAAAAAAAAAAAAANoEAABiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-23T09:19:25.436Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 3,
               "Title": "ChatHistory.cs",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Models\\ChatHistory.cs",
               "RelativeDocumentMoniker": "line\\Models\\ChatHistory.cs",
               "ToolTip": "D:\\Kew\\line\\line\\Models\\ChatHistory.cs",
               "RelativeToolTip": "line\\Models\\ChatHistory.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAA5wAIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAqwAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T09:17:50.308Z"
+              "WhenOpened": "2025-05-23T09:17:50.308Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "line\\Views\\Shared\\_Layout.cshtml",
@@ -180,7 +180,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "AccountController.cs",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "line\\Controllers\\AccountController.cs",
@@ -204,13 +204,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "HomeController.cs",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "line\\Controllers\\HomeController.cs",
               "ToolTip": "D:\\Kew\\line\\line\\Controllers\\HomeController.cs",
               "RelativeToolTip": "line\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAYBAAAAAAAAAAAWwBYBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAHwCAAAAAAAAAAAnwKYCAABhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-23T06:57:36.633Z",
               "EditorCaption": ""
@@ -223,7 +223,7 @@
               "RelativeDocumentMoniker": "line\\Controllers\\LineLoginController.cs",
               "ToolTip": "D:\\Kew\\line\\line\\Controllers\\LineLoginController.cs",
               "RelativeToolTip": "line\\Controllers\\LineLoginController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAkwBEAAABhAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBkAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-23T06:50:09.215Z",
               "EditorCaption": ""
@@ -266,7 +266,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Kew\\line\\line\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "line\\Views\\Home\\Index.cshtml",
@@ -274,8 +274,7 @@
               "RelativeToolTip": "line\\Views\\Home\\Index.cshtml",
               "ViewState": "AgIAAHIAAAAAAAAAAAAAAA0AAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-23T02:47:55.574Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-23T02:47:55.574Z"
             }
           ]
         }
